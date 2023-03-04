@@ -1,0 +1,219 @@
+.navBarContent{
+    width: 100%;
+    min-height: 70px;
+    background-color: red;
+}
+
+.menuItemsNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: #f6f6f6;
+    padding: 0 20px;
+}
+
+.menuLogo{
+    display: flex;
+    align-items: center;
+}
+
+.menuLogo svg{
+    height: 30px;
+    width: 30px;
+}
+
+.menuLogo span{
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #e84d5b;
+}
+
+.itemsNavigation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.menuItem a{
+    transition: 0.2s;
+    text-transform: uppercase;
+    font-weight: 900;
+    gap: 2px;
+}
+
+.menuItem:hover{
+    color: #e84d5b;
+}
+
+
+.nameUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    cursor: pointer;
+}
+
+.nameUser svg{
+    color: #e84d5b;
+}
+
+.buttonLogout{
+    background-color: #e84d5b;
+    color: #fff;
+    width: 60px;
+    height: 30px;
+}
+
+.itemLogin a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 90px;
+    min-height: 35px;
+    border: #e84d5b 2px solid;
+    color: #e84d5b;
+    border-radius: 5px;
+}
+
+.itemRegister a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    min-height: 35px;
+    background-color: #e84d5b;
+    color: #f6f6f6;
+    border-radius: 5px;
+}
+
+.menuMobile{
+    display: none;
+}
+
+.linkActive{
+    color: #e84d5b;
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .menuMobile{
+        display: block;
+    }
+
+    .itemsNavigation{
+        display: none;
+    }
+
+    .menuContentMobile{
+        position: absolute;
+        top:0;
+        right: 0;
+        width: 95%;
+        height: 100%;
+        z-index: 999;
+        background-color: #333333;
+        color: #f6f6f6;
+    }
+
+    .closeMenuMobile{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .closeMenuMobile svg{
+        width: 30px;
+        height: 30px;
+    }
+
+    .menuContentMobile .menuLogo{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 0;
+        font-size: 30px;
+        color: #f6f6f6;
+        border-bottom: #f6f6f6 1px solid;
+    }
+    
+    .menuContentMobile .menuLogo svg{
+        width: 40px;
+        height: 40px;
+    }
+
+    .menuContentMobile ul{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80%;
+        font-size: 25px;
+        gap: 10px;
+    }
+
+    .userInfoMobile{
+        position: absolute;
+        top: 150px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .userLogout{
+        position: relative;
+        top: 200px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    
+    .buttonLogout{
+        background-color: #e84d5b;
+        color: #fff;
+        width: 100px;
+        height: 45px;
+    }
+
+    .contentMobileLoginRegister{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: 10rem;
+        gap: 20px;        
+    }
+
+    .itemLoginMobile a, .itemRegisterMobile a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        border-radius: 5px;
+    }
+
+    .itemLoginMobile a{
+        border: #e84d5b 2px solid;
+        color: #e84d5b;
+        min-height: 45px;
+        min-width: 120px;
+    }
+
+    .itemRegisterMobile{
+        background-color: #e84d5b;
+        color: #f6f6f6;
+        min-width: 180px;
+        min-height: 45px;
+    }
+    
+    
+}
