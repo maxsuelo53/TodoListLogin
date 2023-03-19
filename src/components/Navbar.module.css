@@ -76,8 +76,8 @@
     align-items: center;
     min-width: 90px;
     min-height: 35px;
-    border: #e84d5b 2px solid;
-    color: #e84d5b;
+    border: #000 2px solid;
+    color: #000;
     border-radius: 5px;
 }
 
@@ -202,8 +202,8 @@
     }
 
     .itemLoginMobile a{
-        border: #e84d5b 2px solid;
-        color: #e84d5b;
+        border: #f6f6f6 2px solid;
+        color: #f6f6f6;
         min-height: 45px;
         min-width: 120px;
     }

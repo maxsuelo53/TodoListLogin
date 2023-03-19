@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //ICONES
 import { FaUserAlt } from "react-icons/fa"
@@ -9,6 +9,7 @@ import { IoLogOut, IoClose } from "react-icons/io5"
 import { HiOutlineLogin, HiMenu } from "react-icons/hi"
 import { GoSignIn } from "react-icons/go"
 import { FcSurvey } from "react-icons/fc"
+import Alert from '@mui/material/Alert';
 
 import { useAuthentication } from "../hooks/useAuthentication";
 import { useAuthValue } from "../context/AuthContext";
@@ -18,7 +19,6 @@ const Navbar = () => {
     const { user } = useAuthValue();
     const { logout } = useAuthentication();
     const [menuMobile, setMenuMobile] = useState(false);
-
 
     return (
         <>

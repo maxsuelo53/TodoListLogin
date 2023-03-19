@@ -34,6 +34,7 @@ export const useAuthentication = () => {
     const createUser = async (data) => {
         checkIfIsCancelled();
         setLoading(true);
+        setError(null);
 
         try {
 
@@ -49,10 +50,17 @@ export const useAuthentication = () => {
 
             return user;
 
-        } catch (error) {
+        } catch (errorSystem) {
 
-            console.log(error.message);
-            console.log(typeof error.message);
+            let systemErrorMessage;
+
+            if (errorSystem.message.includes("email-already")) {
+                systemErrorMessage = "O e-mail já está cadastrado. Não foi possível cadastrar o usuário!"
+            } else if (errorSystem.message.includes("password")) {
+                systemErrorMessage = "A senha deve conter no mínimo 6 dígitos!"
+            }
+            setError(systemErrorMessage);
+
 
         }
 

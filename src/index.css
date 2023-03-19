@@ -21,3 +21,28 @@
 .contentComponent{
     min-height: 60vh;
 }
+
+.errorForm{
+    background-color: #FDEDED !important;
+    border-bottom: solid 3px #cf302d !important;
+}
+
+.errorForm::placeholder{
+    color: #5F2120;
+}
+
+
+.alertError{
+    position: absolute;
+    top: 80px;
+    transition: 0.4s;
+}
+
+@media screen and (max-width: 767px) {
+    .alertError{
+        top: 70px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
