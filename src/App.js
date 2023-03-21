@@ -60,7 +60,7 @@ function App() {
   }
 
   return (
-    <div className='mx-auto bg-[#e8e8e8] h-screen'>
+    <div className='mx-auto bg-[#e8e8e8] h-screen pt-[100px]'>
       <AuthProvider value={{ user }}>
         <BrowserRouter>
           <Navbar />

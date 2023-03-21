@@ -32,7 +32,6 @@ const Register = () => {
         console.log(res)
     }
 
-    {/*Teste de erro*/ }
     useEffect(() => {
         if (authError) {
             setError(authError)

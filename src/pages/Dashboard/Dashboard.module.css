@@ -1,0 +1,83 @@
+.dashboard{
+    max-width: 1280px;
+    margin: 20px auto;
+
+    /*TESTE*/
+    height:2000px ;
+}
+
+.painelTop{
+    min-width: 1280px;
+    min-height: 150px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.addItemButton{
+    background-color: #48d5f8;
+    height: 100px;
+    width: 200px;
+    border-radius: 15px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    position: fixed;
+    bottom: 50px;
+    font-size: 18px;
+}
+
+.addItemButton svg{
+    width: 25px;
+    height: 25px;
+}
+
+.buttonFilter{
+    width: 30%;
+    height: 120px;
+    background-color: #FFF;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 15px;
+    font-size: 25px;
+    font-weight: 900;
+
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+    gap: 20px;
+
+}
+
+.buttonFilter div{    
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonFilter div svg{
+    width: 35px;
+    height: 35px;
+}
+
+.backgroundIconFilterButtonAll{
+    background-color: #fef2c4;
+    color: #d4b424;
+}
+
+.backgroundIconFilterButtonEnded{
+    background-color: #c4fec7;
+    color: #32d424;
+}
+
+.backgroundIconFilterButtonAwait{
+    background-color: #c8c4fe;
+    color: #2427d4;
+}

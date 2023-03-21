@@ -2,6 +2,8 @@
     width: 100%;
     min-height: 70px;
     background-color: red;
+    position: fixed;
+    top: 0;
 }
 
 .menuItemsNav{

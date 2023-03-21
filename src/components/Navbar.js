@@ -20,6 +20,14 @@ const Navbar = () => {
     const { logout } = useAuthentication();
     const [menuMobile, setMenuMobile] = useState(false);
 
+    const [nomeUser, setNomeUser] = useState("");
+
+    useEffect(() => {
+        if (user)
+            setNomeUser(user.displayName)
+    }, [user])
+
+
     return (
         <>
             <nav className={styles.navBarContent}>
@@ -50,7 +58,7 @@ const Navbar = () => {
                         {user && (
                             <>
                                 <li className={styles.nameUser}>
-                                    <p>Olá, {user.displayName}! </p>
+                                    <p>Olá, {nomeUser}! </p>
                                     <FaUserAlt />
                                 </li>
                                 <li>
@@ -84,7 +92,7 @@ const Navbar = () => {
                             <>
                                 <div className={styles.userInfoMobile}>
                                     <li className={styles.nameUser}>
-                                        <p>Olá, {user.displayName}! </p>
+                                        <p>Olá, {nomeUser}! </p>
                                         <FaUserAlt />
                                     </li>
                                 </div>

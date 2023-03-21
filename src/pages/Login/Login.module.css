@@ -1,0 +1,123 @@
+.register{
+    max-width: 1280px;
+    margin: auto;
+}
+
+.contentRegister{
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 80px auto auto auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    margin-bottom: 50px;
+
+}
+
+.title h1{
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.title p{
+    color: #9ca3af;
+}
+
+
+.formStyle{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formStyle label{
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    min-width: 300px;
+}
+
+
+.formStyle label span{
+    font-weight: 900;
+}
+
+.formStyle label input{
+    background-color: #f6f6f6;
+    height: 40px;
+    border-bottom: solid 3px #9ca3af;
+    padding: 0 10px;
+}
+
+.formStyle button{
+    background-color: #e84d5b;
+    margin-top: 50px;
+    color: #fff;
+    width: 200px;
+    height: 40px;
+}
+
+.formStyle button:hover{
+    background-color: #cf1e2d;
+    transition: 0.2s;
+}
+
+
+@media screen and (max-width: 767px) {
+    .register{
+        background-image: url('./fundoRegister.svg');
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: center;
+        max-width: 90vw;
+        margin: none;
+    }
+    
+    .contentRegister{
+        width: 90%;
+        height: 80%;
+        margin: 40px auto auto auto;
+        background-color: rgba(255, 255, 255, 0.856);
+    }
+    
+    .title{
+        margin-bottom: 20px;
+        text-align: center;
+    
+    }
+    
+    .formStyle label{
+        min-width: 75%;
+    }
+    
+    .formStyle label input{
+        background-color: #f6f6f6;
+        height: 40px;
+        border-bottom: solid 3px #9ca3af;
+        padding: 0 10px;
+    }
+    
+    .formStyle button{
+        background-color: #e84d5b;
+        margin-top: 20px;
+        color: #fff;
+        width: 200px;
+        height: 40px;
+        margin-bottom: 20px;
+    }
+    
+    .formStyle button:hover{
+        background-color: #cf1e2d;
+        transition: 0.2s;
+    }
+}
