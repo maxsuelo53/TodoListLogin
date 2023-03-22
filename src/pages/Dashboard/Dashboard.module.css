@@ -3,7 +3,7 @@
     margin: 20px auto;
 
     /*TESTE*/
-    height:2000px ;
+    height: 650px ;
 }
 
 .painelTop{
@@ -12,31 +12,8 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
-
-.addItemButton{
-    background-color: #48d5f8;
-    height: 100px;
-    width: 200px;
-    border-radius: 15px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-    position: fixed;
-    bottom: 50px;
-    font-size: 18px;
-}
-
-.addItemButton svg{
-    width: 25px;
-    height: 25px;
-}
-
 .buttonFilter{
     width: 30%;
     height: 120px;
@@ -68,8 +45,8 @@
 }
 
 .backgroundIconFilterButtonAll{
-    background-color: #fef2c4;
-    color: #d4b424;
+    background-color: #c8c4fe;
+    color: #2427d4;
 }
 
 .backgroundIconFilterButtonEnded{
@@ -77,7 +54,103 @@
     color: #32d424;
 }
 
+
 .backgroundIconFilterButtonAwait{
-    background-color: #c8c4fe;
-    color: #2427d4;
+    background-color: #fef2c4;
+    color: #d4b424;
 }
+
+
+.todoListContent{
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 30px 50px;
+}
+
+.todoListContent h1{
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.actionsTodoList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.addItemButton{
+    background-color: #4eabe5;
+    height: 60px;
+    width: 200px;
+    border-radius: 15px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-size: 18px;
+}
+
+.addItemButton svg{
+    width: 25px;
+    height: 25px;
+}
+
+.actionsTodoList form{
+    width: 80%;
+    height: 60px;
+    display: flex;
+}
+
+.actionsTodoList input{
+    background-color: #EEEDEC;
+    border-radius: 10px 0 0 10px;
+    width: 890px;
+    height: 60px;
+    padding-left: 20px;
+}
+
+.buttonSearch{
+    background-color: #4eabe5;
+    width: 100%;
+    border-radius: 0 10px 10px 0;
+}
+
+.buttonSearch svg{
+    color: #fff;
+}
+
+.listContent{
+    margin-top: 30px;
+}
+
+.listTodos{
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    height: 450px;
+    margin-top: 20px;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.listTodos li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 2px solid #EEEDEC;
+    min-height: 60px;
+}
+
+
+

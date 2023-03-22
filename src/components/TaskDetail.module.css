@@ -1,0 +1,31 @@
+.title{
+    width: 500px;
+}
+
+.status{
+    width: 250px;
+}
+
+.data{
+    width: 250px;
+}
+
+.status, .data{
+    text-align: center;
+}
+
+.status div{
+    color: #fff;
+}
+
+.taskCompleted{
+    background-color: #32d424;
+    max-width: 150px;
+    border-radius: 10px;
+}
+
+.taskPending{
+    background-color: #fbcf2b;
+    border-radius: 10px;
+    max-width: 150px;
+}
