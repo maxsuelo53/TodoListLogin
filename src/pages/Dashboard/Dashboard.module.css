@@ -144,12 +144,19 @@
 
 }
 
-.listTodos li{
+.listTodos li div{
     display: flex;
     flex-direction: row;
     align-items: center;
     border-bottom: 2px solid #EEEDEC;
     min-height: 60px;
+    cursor: pointer;
+    padding: 0 10px ;
+}
+
+.listTodos li:hover{
+    background-color: #EEEDEC;
+    transition: 0.3s;
 }
 
 
