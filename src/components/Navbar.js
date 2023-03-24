@@ -9,7 +9,7 @@ import { IoLogOut, IoClose } from "react-icons/io5"
 import { HiOutlineLogin, HiMenu } from "react-icons/hi"
 import { GoSignIn } from "react-icons/go"
 import { FcSurvey } from "react-icons/fc"
-import Alert from '@mui/material/Alert';
+import {MdDashboard, MdInfo} from "react-icons/md"
 
 import { useAuthentication } from "../hooks/useAuthentication";
 import { useAuthValue } from "../context/AuthContext";
@@ -38,20 +38,26 @@ const Navbar = () => {
                     </NavLink>
                     <div className={styles.itemsNavigation}>
                         <li className={styles.menuItem}>
-                            <NavLink to={"/"} className={({ isActive }) => (isActive ? styles.linkActive : "")}>Tarefas</NavLink>
+                            <NavLink to={"/"} className={({ isActive }) => (isActive ? styles.linkActive : "")}>
+                                <MdDashboard/>
+                                Tarefas
+                            </NavLink>
                         </li>
                         <li className={styles.menuItem}>
-                            <NavLink to={"/about"} className={({ isActive }) => (isActive ? styles.linkActive : "")}>Sobre</NavLink>
+                            <NavLink to={"/about"} className={({ isActive }) => (isActive ? styles.linkActive : "")}>
+                                <MdInfo/>
+                                Sobre
+                            </NavLink>
                         </li>
                     </div>
                     <div className={styles.itemsNavigation}>
                         {!user && (
                             <>
-                                <li className={`${styles.menuItem} ${styles.itemLogin} btn`}>
-                                    <NavLink to={"/login"} className={({ isActive }) => (isActive ? styles.linkActive : "")}> <HiOutlineLogin /> Login</NavLink>
+                                <li className={`${styles.menuItem} ${styles.buttonLogin} btn`}>
+                                    <NavLink to={"/login"}> <HiOutlineLogin /> Login</NavLink>
                                 </li>
-                                <li className={`${styles.menuItem} btn ${styles.itemRegister}`}>
-                                    <NavLink to={"/register"} className={({ isActive }) => (isActive ? styles.linkActive : "")}><GoSignIn /> Cadastro</NavLink>
+                                <li className={`${styles.menuItem} btn ${styles.buttonRegister}`}>
+                                    <NavLink to={"/register"}><GoSignIn /> Cadastro</NavLink>
                                 </li>
                             </>
                         )}
@@ -71,7 +77,7 @@ const Navbar = () => {
                             </>
                         )}
                     </div>
-                    <li className={styles.menuMobile}>
+                    <li className={styles.menuMobileOpen}>
                         <HiMenu onClick={() => setMenuMobile(true)} />
                     </li>
                 </ul>

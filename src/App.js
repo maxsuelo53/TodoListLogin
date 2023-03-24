@@ -1,15 +1,12 @@
 
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { onAuthStateChanged } from 'firebase/auth';
-import { Oval } from 'react-loader-spinner'
-
-// hooks
+//HOOKS
 import { useState, useEffect } from 'react';
-
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 //CONTEXT
 import { AuthProvider } from './context/AuthContext';
 import { useAuthentication } from './hooks/useAuthentication';
+import { onAuthStateChanged } from 'firebase/auth';
 
 //PAGES
 import Home from './pages/Home/Home';
@@ -21,6 +18,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 //COMPONENTS
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { Oval } from 'react-loader-spinner'
 
 
 function App() {
@@ -60,7 +58,7 @@ function App() {
   }
 
   return (
-    <div className='mx-auto bg-[#e8e8e8] h-screen pt-[100px]'>
+    <div className='App'>
       <AuthProvider value={{ user }}>
         <BrowserRouter>
           <Navbar />

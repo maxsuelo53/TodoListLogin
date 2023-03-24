@@ -1,9 +1,7 @@
 .navBarContent{
     width: 100%;
-    min-height: 70px;
-    background-color: red;
-    position: fixed;
-    top: 0;
+    min-height: 60px;
+    margin: 0;
 }
 
 .menuItemsNav{
@@ -12,14 +10,16 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 70px;
-    background-color: #f6f6f6;
+    height: 60px;
+    background-color: #364153;
     padding: 0 20px;
+    border-radius: 0 0 10px 10px;
 }
 
 .menuLogo{
     display: flex;
     align-items: center;
+    color:#fff
 }
 
 .menuLogo svg{
@@ -30,7 +30,7 @@
 .menuLogo span{
     font-weight: 900;
     text-transform: uppercase;
-    color: #e84d5b;
+    color: #37BBF6;
 }
 
 .itemsNavigation{
@@ -42,13 +42,17 @@
 
 .menuItem a{
     transition: 0.2s;
-    text-transform: uppercase;
-    font-weight: 900;
-    gap: 2px;
+    text-transform: capitalize;
+    font-weight: 700;
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #868D98;
 }
 
-.menuItem:hover{
-    color: #e84d5b;
+.menuItem a:hover{
+    color: #37BBF6;
 }
 
 
@@ -72,41 +76,60 @@
     height: 30px;
 }
 
-.itemLogin a{
+.buttonLogin a{
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 90px;
     min-height: 35px;
-    border: #000 2px solid;
-    color: #000;
+    border: #868D98 2px solid;
     border-radius: 5px;
 }
 
-.itemRegister a{
+.buttonLogin a:hover{
+    border: #37BBF6 2px solid;
+}
+
+.buttonRegister a{
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 120px;
     min-height: 35px;
-    background-color: #e84d5b;
-    color: #f6f6f6;
+    background-color: #37BBF6;
+    color: #364153;
     border-radius: 5px;
 }
 
-.menuMobile{
+.buttonRegister a:hover{
+    background-color: #2e9fd4;
+    color: #364153;
+}
+
+.menuMobileOpen{
     display: none;
 }
 
 .linkActive{
-    color: #e84d5b;
+    color: #37BBF6 !important;
 }
 
 
 
 @media screen and (max-width: 767px) {
-    .menuMobile{
+
+    .menuItemsNav{
+        border-radius: 0;
+    }
+
+    .menuMobileOpen{
         display: block;
+        cursor: pointer;
+        color: #868D98;
+    }
+
+    .menuMobileOpen:hover{
+        color: #2e9fd4;
     }
 
     .itemsNavigation{
@@ -120,8 +143,8 @@
         width: 95%;
         height: 100%;
         z-index: 999;
-        background-color: #333333;
-        color: #f6f6f6;
+        background-color: #364153;
+        color: #868D98;
     }
 
     .closeMenuMobile{
@@ -133,6 +156,11 @@
     .closeMenuMobile svg{
         width: 30px;
         height: 30px;
+        cursor: pointer;
+    }
+
+    .closeMenuMobile svg:hover{
+        color: #37BBF6;
     }
 
     .menuContentMobile .menuLogo{
@@ -143,7 +171,7 @@
         padding: 30px 0;
         font-size: 30px;
         color: #f6f6f6;
-        border-bottom: #f6f6f6 1px solid;
+        border-bottom: #1A202C 1px solid;
     }
     
     .menuContentMobile .menuLogo svg{
@@ -204,17 +232,35 @@
     }
 
     .itemLoginMobile a{
-        border: #f6f6f6 2px solid;
-        color: #f6f6f6;
+        border: #868D98 2px solid;
+        color: #868D98;
         min-height: 45px;
         min-width: 120px;
     }
 
+    .itemLoginMobile a:hover{
+       border: #2e9fd4 2px solid;
+    }
+
     .itemRegisterMobile{
-        background-color: #e84d5b;
-        color: #f6f6f6;
+        background-color: #37BBF6;
+        color: #364153;
         min-width: 180px;
         min-height: 45px;
+    }
+    
+    .itemRegisterMobile:hover{
+        background-color: #2e9fd4;
+        
+    }
+
+    .itemRegisterMobile a{
+        color: #364153;
+    }
+
+    .itemRegisterMobile a:hover{
+        color: #364153;
+       
     }
     
     
