@@ -4,6 +4,7 @@ import {
     signInWithEmailAndPassword,
     updateProfile,
     signOut,
+    updatePassword,
 
 } from 'firebase/auth';
 
@@ -101,10 +102,19 @@ export const useAuthentication = () => {
         signOut(auth)
     }
 
+    //RESET PASSWORD
+    const resetPasswordUuser = (newPassword) => {
+        const user = auth.currentUser;
+
+        user.updatePassword(newPassword);
+    }
+
 
     useEffect(() => {
         return () => { setCancelled(true) }
     }, [])
+
+
 
 
     return {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import styles from "./Dashboard.module.css"
 import { MdOutlinePlaylistAdd } from "react-icons/md"
@@ -29,6 +29,11 @@ const Dashboard = () => {
     const handleOpenModalAddTask = () => setOpenModalAddTask(true);
     const handleCloseModalAddTask = () => setOpenModalAddTask(false);
 
+    //Contadores
+    const [tasksEnd, setTasksEnd] = useState(0)
+    const [tasksPending, setTaskPending] = useState(0)
+    const [tasksTotal, settaskTotal] = useState(0);
+
     const { register: searchForm, handleSubmit, watch, formState: { errors } }
         = useForm({
             resolver: yupResolver(schema)
@@ -37,6 +42,17 @@ const Dashboard = () => {
     const SearchSubmit = async (userData) => {
 
     }
+
+    useEffect(() => {
+        if (tasks) {
+            setTasksEnd(tasks.filter(item => item.checkTask === true).length)
+            setTaskPending(tasks.filter(item => item.checkTask === false).length)
+            settaskTotal(tasks.length)
+        }
+        return
+    }, [tasks])
+
+
 
     return (
         <>
@@ -47,18 +63,21 @@ const Dashboard = () => {
                             <BsCardList />
                         </div>
                         <span>Tarefas</span>
+                        <p>{tasksTotal}</p>
                     </button>
                     <button className={`btn ${styles.buttonFilter}`}>
                         <div className={styles.backgroundIconFilterButtonEnded}>
                             <BsCheckAll />
                         </div>
                         <span>Realizadas</span>
+                        <p>{tasksEnd}</p>
                     </button>
                     <button className={`btn ${styles.buttonFilter}`}>
                         <div className={styles.backgroundIconFilterButtonAwait}>
                             <BsClock />
                         </div>
                         <span>Pendentes</span>
+                        <p>{tasksPending}</p>
                     </button>
                 </div>
                 <div className={styles.todoListContent}>
