@@ -19,7 +19,7 @@
 .menuLogo{
     display: flex;
     align-items: center;
-    color:#fff
+    color:#fff;
 }
 
 .menuLogo svg{
@@ -61,19 +61,24 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-
+    color: #fff;
     cursor: pointer;
 }
 
 .nameUser svg{
-    color: #e84d5b;
+    color: var(--third-color);
 }
 
 .buttonLogout{
-    background-color: #e84d5b;
-    color: #fff;
-    width: 60px;
-    height: 30px;
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+    width: 70px;
+    height: 35px;
+}
+
+.buttonLogout:hover{
+    background-color: #2e9fd4;
+    transition: 0.3s;
 }
 
 .buttonLogin a{

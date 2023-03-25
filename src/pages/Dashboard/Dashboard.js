@@ -58,27 +58,33 @@ const Dashboard = () => {
         <>
             <div className={styles.dashboard}>
                 <div className={styles.painelTop}>
-                    <button className={`btn ${styles.buttonFilter}`}>
-                        <div className={` ${styles.backgroundIconFilterButtonAll}`}>
+                    <div className={`btn ${styles.FilterCountTasks}`}>
+                        <div className={`${styles.FilterCountTasksIcon} ${styles.colorCountAll}`}>
                             <BsCardList />
                         </div>
-                        <span>Tarefas</span>
-                        <p>{tasksTotal}</p>
-                    </button>
-                    <button className={`btn ${styles.buttonFilter}`}>
-                        <div className={styles.backgroundIconFilterButtonEnded}>
+                        <div>
+                            <span>Tarefas</span>
+                            <p>{tasksTotal}</p>
+                        </div>
+                    </div>
+                    <div className={`btn ${styles.FilterCountTasks}`}>
+                        <div className={` ${styles.FilterCountTasksIcon} ${styles.colorCountEnd}`}>
                             <BsCheckAll />
                         </div>
-                        <span>Realizadas</span>
-                        <p>{tasksEnd}</p>
-                    </button>
-                    <button className={`btn ${styles.buttonFilter}`}>
-                        <div className={styles.backgroundIconFilterButtonAwait}>
+                        <div>
+                            <span>Realizadas</span>
+                            <p>{tasksEnd}</p>
+                        </div>
+                    </div>
+                    <div className={`btn ${styles.FilterCountTasks}`}>
+                        <div className={` ${styles.FilterCountTasksIcon} ${styles.colorCountWait}`}>
                             <BsClock />
                         </div>
-                        <span>Pendentes</span>
-                        <p>{tasksPending}</p>
-                    </button>
+                        <div>
+                            <span>Pendentes</span>
+                            <p>{tasksPending}</p>
+                        </div>
+                    </div>
                 </div>
                 <div className={styles.todoListContent}>
                     <h1>Tarefas</h1>

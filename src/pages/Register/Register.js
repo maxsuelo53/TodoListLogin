@@ -8,6 +8,13 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react"
 import { useAuthentication } from '../../hooks/useAuthentication';
 
+//ICONS
+import { FaUserAlt } from "react-icons/fa";
+import { HiMail } from "react-icons/hi";
+import { TbPassword } from "react-icons/tb"
+import { RiLockPasswordFill } from "react-icons/ri";
+import { FaUserPlus } from "react-icons/fa"
+
 
 const schema = yup.object({
     displayName: yup.string().required("Nome é obrigatório"),
@@ -41,42 +48,53 @@ const Register = () => {
     return (
         <div className={styles.register} >
             <div className={styles.contentRegister}>
+                <div className={styles.iconLoginPerson}>
+                    <FaUserPlus />
+                </div>
                 <div className={styles.title}>
                     <h1>Cadastre-se</h1>
                     <p>Crie seu usuário e organize suas tarefas!</p>
                 </div>
                 <form onSubmit={handleSubmit(registerUser)} className={styles.formStyle}>
                     <label>
-                        <span>Nome</span>
+                        <div className={styles.iconInput} >
+                            <FaUserAlt />
+                        </div>
                         <input type="text"
                             placeholder={`${errors.displayName ? errors.displayName.message : "Nome do usuário"}`}
                             {...register("displayName")}
-                            className={`${errors.displayName ? 'errorForm' : ""}`}
+                            className={`inputStyle ${errors.displayName ? 'errorForm' : ""}`}
                         />
 
                     </label>
                     <label>
-                        <span>E-mail</span>
+                        <div className={styles.iconInput} >
+                            <HiMail />
+                        </div>
                         <input type="email"
                             placeholder={`${errors.email ? errors.email.message : "E-mail do usuário"}`}
                             {...register("email")}
-                            className={`${errors.email ? 'errorForm' : ""}`}
+                            className={`inputStyle ${errors.email ? 'errorForm' : ""}`}
                         />
                     </label>
                     <label>
-                        <span>Senha</span>
+                        <div className={styles.iconInput} >
+                            <TbPassword />
+                        </div>
                         <input type="password"
                             placeholder={`${errors.password ? errors.password.message : "Digite a sua senha"}`}
                             {...register("password")}
-                            className={`${errors.password ? 'errorForm' : ""}`}
+                            className={`inputStyle ${errors.password ? 'errorForm' : ""}`}
                         />
                     </label>
                     <label>
-                        <span>Confirmação de senha</span>
+                        <div className={styles.iconInput} >
+                            <RiLockPasswordFill />
+                        </div>
                         <input type="password"
                             placeholder={`${errors.confirmPassword ? errors.confirmPassword.message : "Confirme a sua senha"}`}
                             {...register("confirmPassword")}
-                            className={`${errors.confirmPassword ? 'errorForm' : ""}`}
+                            className={`inputStyle ${errors.confirmPassword ? 'errorForm' : ""}`}
                         />
                     </label>
                     <button className="btn" type='submit'>Cadastrar</button>

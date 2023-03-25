@@ -1,6 +1,12 @@
 import Alert from '@mui/material/Alert';
 import styles from "./Login.module.css"
 
+//ICONS
+import { BsPersonFill } from "react-icons/bs";
+import { HiMail } from "react-icons/hi";
+import { TbPassword } from "react-icons/tb";
+
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -41,25 +47,32 @@ const Login = () => {
     return (
         <div className={styles.register} >
             <div className={styles.contentRegister}>
+                <div className={styles.iconLoginPerson}>
+                    <BsPersonFill />
+                </div>
                 <div className={styles.title}>
                     <h1>Login</h1>
                     <p>Acesse o sistema para gerenciar suas tarefas!</p>
                 </div>
                 <form onSubmit={handleSubmit(loginUserSubmit)} className={styles.formStyle}>
                     <label>
-                        <span>E-mail</span>
+                        <div className={styles.iconInput} >
+                            <HiMail />
+                        </div>
                         <input type="email"
                             placeholder={`${errors.email ? errors.email.message : "E-mail do usuário"}`}
                             {...login("email")}
-                            className={`${errors.email ? 'errorForm' : ""}`}
+                            className={` inputStyle ${errors.email ? 'errorForm' : ""}`}
                         />
                     </label>
                     <label>
-                        <span>Senha</span>
+                        <div className={styles.iconInput}>
+                            <TbPassword />
+                        </div>
                         <input type="password"
                             placeholder={`${errors.password ? errors.password.message : "Digite a sua senha"}`}
                             {...login("password")}
-                            className={`${errors.password ? 'errorForm' : ""}`}
+                            className={` inputStyle ${errors.password ? 'errorForm' : ""}`}
                         />
                     </label>
                     <button className="btn" type='submit'>Entrar</button>
@@ -70,10 +83,6 @@ const Login = () => {
                     )}
                 </form>
             </div>
-            <div>
-                teste
-            </div>
-
         </div>
     )
 }

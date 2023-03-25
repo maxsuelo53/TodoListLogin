@@ -1,63 +1,61 @@
 .dashboard{
-    max-width: 1280px;
-    margin: 20px auto;
-
-    /*TESTE*/
-    height: 650px ;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
 
 .painelTop{
-    min-width: 1280px;
-    min-height: 150px;
-
+    width: 100%;
+    height: 170px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
-.buttonFilter{
-    width: 30%;
-    height: 120px;
-    background-color: #FFF;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+.FilterCountTasks{
+    width: 31.5%;
+    height: 80%;
+    background-color: var(--secondary-color);
     border-radius: 15px;
     font-size: 25px;
     font-weight: 900;
-
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     justify-content: flex-start;
-    padding-left: 20px;
-    gap: 20px;
-
+    padding: 20px 0 0 20px;
 }
 
-.buttonFilter div{    
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
+.FilterCountTasksIcon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 20px;
 }
 
-.buttonFilter div svg{
-    width: 35px;
-    height: 35px;
+.colorCountAll{
+    background-color: #37BBF620;
+    color: var(--third-color);
 }
 
-.backgroundIconFilterButtonAll{
-    background-color: #c8c4fe;
-    color: #2427d4;
-}
-
-.backgroundIconFilterButtonEnded{
-    background-color: #c4fec7;
-    color: #32d424;
+.colorCountEnd{
+    background-color: #2FE5A720;
+    color: var(--fourth-color);
 }
 
 
-.backgroundIconFilterButtonAwait{
-    background-color: #fef2c4;
-    color: #d4b424;
+.colorCountWait{
+    background-color: #ff69b420;
+    color: var(--fifth-color);
 }
 
 
