@@ -4,6 +4,7 @@ import { useState } from "react";
 import ModalEditTask from "./ModalEditTask";
 
 
+
 import { useDeleteDocument } from "../hooks/useDeleteDocument";
 import { useAuthValue } from "../context/AuthContext";
 import { useUpdateDocument } from "../hooks/useUpadteDocument";
@@ -32,13 +33,13 @@ const TaskDetail = ({ task }) => {
             <div onClick={handleOpenModal}>
                 <p className={styles.title}>{task.title}</p>
                 <p className={styles.data}>{dataTask}</p>
-                <span className={`${styles.status} ${task.checkTask ? styles.taskCompleted : styles.taskPending}`}>
+                <p className={`${styles.status} ${task.checkTask ? styles.taskCompleted : styles.taskPending}`}>
                     <div>
                         {task.checkTask ? (
                             <p>Completa</p>
                         ) : (<p>Pendente</p>)}
                     </div>
-                </span>
+                </p>
                 <ModalEditTask
                     openModal={OpenModal}
                     handleClose={handleCloseModal}

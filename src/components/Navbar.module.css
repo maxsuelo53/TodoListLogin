@@ -214,8 +214,8 @@
 
     
     .buttonLogout{
-        background-color: #e84d5b;
-        color: #fff;
+        background-color: var(--text-color);
+        color: var(--secondary-color);
         width: 100px;
         height: 45px;
     }

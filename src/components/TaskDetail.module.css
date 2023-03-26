@@ -1,36 +1,56 @@
 .title{
-    width: 500px;
-}
-
-.status{
-    width: 250px;
-    height: 30px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 50%;
+    overflow: hidden;
 }
 
 .data{
-    width: 250px;
+    width: 25%;
+    display: flex;
+    padding-left: 10px;
 }
 
-.status, .data{
-    text-align: center;
+.status{
+    width: 25%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 10px;
 }
-
 .status div{
-    color: #fff;
+    min-height: 35px;
+    max-width: 120px;
+    border-radius: 15px;
+    justify-content: center;
 }
 
-.taskCompleted{
-    background-color: #32d424;
-    max-width: 150px;
-    border-radius: 10px;
+.taskCompleted div{
+    background-color: #2FE5A720;
+    color: var(--fourth-color);
+
 }
 
-.taskPending{
-    background-color: #fbcf2b;
-    border-radius: 10px;
-    max-width: 150px;
+.taskPending div{
+    background-color: #ff69b420;
+    color: var(--fifth-color);
 }
+
+@media screen and (max-width: 767px) {
+    .data{
+        display: none;
+    }
+    .status{
+        width: 50%;
+        justify-content: flex-end;
+    }
+
+    .status div{
+        min-height: 25px;
+        max-width: 80px;
+        border-radius: 15px;
+        justify-content: center;
+        font-size: 12px;
+    
+    }
+}
+
+    

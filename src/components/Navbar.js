@@ -9,7 +9,7 @@ import { IoLogOut, IoClose } from "react-icons/io5"
 import { HiOutlineLogin, HiMenu } from "react-icons/hi"
 import { GoSignIn } from "react-icons/go"
 import { FcSurvey } from "react-icons/fc"
-import {MdDashboard, MdInfo} from "react-icons/md"
+import { MdDashboard, MdInfo } from "react-icons/md"
 
 import { useAuthentication } from "../hooks/useAuthentication";
 import { useAuthValue } from "../context/AuthContext";
@@ -27,6 +27,11 @@ const Navbar = () => {
             setNomeUser(user.displayName)
     }, [user])
 
+    const closeMenuMobile = () => {
+        setMenuMobile(false);
+        logout();
+    }
+
 
     return (
         <>
@@ -39,13 +44,13 @@ const Navbar = () => {
                     <div className={styles.itemsNavigation}>
                         <li className={styles.menuItem}>
                             <NavLink to={"/"} className={({ isActive }) => (isActive ? styles.linkActive : "")}>
-                                <MdDashboard/>
+                                <MdDashboard />
                                 Tarefas
                             </NavLink>
                         </li>
                         <li className={styles.menuItem}>
                             <NavLink to={"/about"} className={({ isActive }) => (isActive ? styles.linkActive : "")}>
-                                <MdInfo/>
+                                <MdInfo />
                                 Sobre
                             </NavLink>
                         </li>
@@ -127,7 +132,7 @@ const Navbar = () => {
                                 <>
                                     <div className={styles.userLogout}>
                                         <li>
-                                            <button onClick={logout} className={`btn ${styles.buttonLogout}`}>
+                                            <button onClick={() => closeMenuMobile()} className={`btn ${styles.buttonLogout}`}>
                                                 <span>Sair</span>
                                                 <IoLogOut />
                                             </button>

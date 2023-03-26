@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 
 import styles from "./ModalAddTask.module.css"
+import { BsFillPencilFill } from 'react-icons/bs'
 
 import React from 'react';
 import { useInsertDocument } from '../hooks/useInsertDocument';
@@ -17,18 +18,6 @@ const schema = yup.object({
     checkTask: yup.bool().default(false),
 
 }).required();
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
 
 const ModalAddTask = ({ openModal, handleClose }) => {
 
@@ -58,24 +47,29 @@ const ModalAddTask = ({ openModal, handleClose }) => {
             open={openModal}
             onClose={handleClose}
         >
-            <Box sx={style}>
+            <Box className={styles.modalAddTaskContent}>
                 <form onSubmit={handleSubmit(addTaskData)} className={styles.formStyle}>
+                    <h1>Nova Tarefa</h1>
                     <label>
-                        <span>Título</span>
+                        <div className={styles.iconInput} >
+                            <BsFillPencilFill />
+                        </div>
                         <input type="text"
                             placeholder="Título da tarefa"
-                            {...addTask("title")} />
-
+                            {...addTask("title")}
+                            className='inputStyle'
+                        />
                     </label>
                     <label>
-                        <span>Tarefa</span>
                         <textarea type="text"
                             placeholder="Escreva a tarefa"
                             {...addTask("task")}
+                            className='inputStyle'
                         />
                     </label>
                     <button className="btn" type='submit'>Cadastrar</button>
                 </form>
+                <button className="btn" onClick={() => handleClose()}>sair</button>
             </Box>
         </Modal>
     )
