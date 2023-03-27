@@ -60,6 +60,13 @@
     padding: 10px;
 }
 
+.checkBox{
+    background-color: red;
+    width: 80%;
+    display: flex;
+    justify-content: end;
+}
+
 .formStyle button{
     background-color: var(--third-color);
     height: 60px;

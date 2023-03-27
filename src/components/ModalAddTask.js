@@ -1,6 +1,8 @@
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
+import { BsSendPlusFill } from "react-icons/bs"
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -11,6 +13,8 @@ import { BsFillPencilFill } from 'react-icons/bs'
 import React from 'react';
 import { useInsertDocument } from '../hooks/useInsertDocument';
 import { useAuthValue } from "../context/AuthContext"
+
+
 
 const schema = yup.object({
     title: yup.string().required("Título é obrigatório"),
@@ -67,11 +71,17 @@ const ModalAddTask = ({ openModal, handleClose }) => {
                             className='inputStyle'
                         />
                     </label>
-                    <button className="btn" type='submit'>Cadastrar</button>
+                    <button className="btn" type='submit'>
+                        Cadastrar
+                        <BsSendPlusFill />
+                    </button>
                 </form>
-                <button className="btn" onClick={() => handleClose()}>sair</button>
+                <div className={styles.buttonCloseContent}>
+                    <button className={`btn ${styles.buttonClose}`} onClick={() => handleClose()} >Sair</button>
+                </div>
+
             </Box>
-        </Modal>
+        </Modal >
     )
 }
 

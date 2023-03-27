@@ -8,19 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 1000,
-    height: 1000,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
+import styles from "./ModalEditTask.module.css"
+import { BsFillPencilFill } from 'react-icons/bs';
 
 const schema = yup.object({
     title: yup.string().required("Título é obrigatório"),
@@ -42,7 +31,7 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
     useEffect(() => {
         setValue('title', task.title);
         setValue('task', task.task);
-        setValue('checkTask', false);
+        setValue('checkTask', task.checkTask);
     }, [])
 
 
@@ -69,10 +58,12 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
             open={openModal}
             onClose={handleClose}
         >
-            <Box sx={style}>
-                <form onSubmit={handleSubmit(editTaskSubmit)}>
+            <Box className={styles.modalAddTaskContent}>
+                <form onSubmit={handleSubmit(editTaskSubmit)} className={styles.formStyle}>
                     <label>
-                        <span>Título</span>
+                        <div className={styles.iconInput} >
+                            <BsFillPencilFill />
+                        </div>
                         <input type="text"
                             placeholder="Título da tarefa"
                             {...taskInfo("title")}
@@ -80,15 +71,26 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
 
                     </label>
                     <label>
-                        <span>Tarefa</span>
                         <textarea type="text"
                             placeholder="Escreva a tarefa"
                             {...taskInfo("task")}
                         />
                     </label>
+                    <label className={styles.checkBox}>
+                        <input type="checkbox"
+                            placeholder="Escreva a tarefa"
+                            {...taskInfo("checkTask")}
+                        />
+                        <span>
+                            {task.checkTask ? <p>Tarefa feita</p> : <p>Concluir Tarefa</p>}
+                        </span>
+                    </label>
                     <button className="btn" type='submit'>Salvar</button>
                 </form>
                 <button onClick={() => deleteTaskItem(task.id)}>excluir</button>
+                <div className={styles.buttonCloseContent}>
+                    <button className={`btn ${styles.buttonClose}`} onClick={() => handleClose()} >Sair</button>
+                </div>
             </Box>
         </Modal >
     )
