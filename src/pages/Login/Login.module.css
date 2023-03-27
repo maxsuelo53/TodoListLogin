@@ -1,146 +1,57 @@
-.register{
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin: 10% auto auto auto;
-}
-
-.contentRegister{
-    width: 500px;
-    height: 600px;
+.containerLogin{
     background-color: var(--secondary-color);
-    border-radius: 10px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 20px;
+    width: 30%;
+    height: 73%;
     display: flex;
-    justify-content: center;
-    align-items:center;
     flex-direction: column;
+    align-items: center;
+    padding: 2%;
+    gap: 5%;
 }
 
 .iconLoginPerson{
-    font-size: 100px;
-    margin: none;
-    bottom: 50px;
-    background-color:var(--third-color);
-    color: var(--secondary-color);
+    width: 90px;
+    height: 90px;
+    font-size: 60px;
     border-radius: 50%;
-    padding: 10px;
+    background-color: var(--third-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
 }
 
 .title{
-    width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
-    margin-bottom: 50px;
-
 }
 
 .title h1{
-    font-size: 35px;
-    font-weight: 900;
     color: #fff;
+    font-size: 30px;
+    font-weight: 900;
 }
 
 .title p{
-    color: #9ca3af;
+    color: var(--text-color);
+    font-size: 13px;
 }
 
-
-.formStyle{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.formStyle label{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 10px auto;
-    width: 250px;
-}
-
-.iconInput{
+.buttonSend{
     background-color: var(--third-color);
-    color: var(--secondary-color);
-    height: 40px;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px 0 0 10px;
-}
-
-.formStyle label input{
-    height: 40px;
-    width: 100%;
-}
-
-.formStyle button{
-    background-color: var(--third-color);
-    margin-top: 50px;
     color: #fff;
-    width: 200px;
+    width: 150px;
     height: 40px;
 }
 
-.formStyle button:hover{
-    background-color: #2e9fd4;
-    transition: 0.2s;
-}
-
-.imageBackground{
-    width: 500px;
+@media screen and(max-width: 900px){
+    
+    
 }
 
 
-@media screen and (max-width: 767px) {
-    .register{
-        max-width: 90vw;
-        margin: none;
-    }
-    
-    .contentRegister{
-        width: 90%;
-        height: 80%;
-        margin: 40px auto auto auto;
-    }
-    
-    .iconLoginPerson{
-        font-size: 50px;
-        margin-top: 20px;
-    }
 
-    .title{
-        margin-bottom: 20px;
-        text-align: center;    
-    }
-    
-    .formStyle label{
-        width: 90%;
-    }
-    
-    .formStyle label input{
-        height: 40px;
-    }
-    
-    .formStyle button{
-        background-color: var(--third-color);
-        margin-top: 20px;
-        color: #fff;
-        width: 200px;
-        height: 40px;
-        margin-bottom: 20px;
-    }
-    
-    .formStyle button:hover{
-        background-color: var(--third-color-hover);
-        transition: 0.2s;
-    }
-}
+

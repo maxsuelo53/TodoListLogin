@@ -45,8 +45,8 @@ const Login = () => {
     }, [authError])
 
     return (
-        <div className={styles.register} >
-            <div className={styles.contentRegister}>
+        <div className='container' >
+            <div className={styles.containerLogin}>
                 <div className={styles.iconLoginPerson}>
                     <BsPersonFill />
                 </div>
@@ -54,9 +54,9 @@ const Login = () => {
                     <h1>Login</h1>
                     <p>Acesse o sistema para gerenciar suas tarefas!</p>
                 </div>
-                <form onSubmit={handleSubmit(loginUserSubmit)} className={styles.formStyle}>
-                    <label>
-                        <div className={styles.iconInput} >
+                <form onSubmit={handleSubmit(loginUserSubmit)} className="contentForm">
+                    <label className='labelContent'>
+                        <div className="iconInput">
                             <HiMail />
                         </div>
                         <input type="email"
@@ -65,8 +65,8 @@ const Login = () => {
                             className={` inputStyle ${errors.email ? 'errorForm' : ""}`}
                         />
                     </label>
-                    <label>
-                        <div className={styles.iconInput}>
+                    <label className='labelContent'>
+                        <div className="iconInput">
                             <TbPassword />
                         </div>
                         <input type="password"
@@ -75,12 +75,8 @@ const Login = () => {
                             className={` inputStyle ${errors.password ? 'errorForm' : ""}`}
                         />
                     </label>
-                    <button className="btn" type='submit'>Entrar</button>
-                    {authError && (
-                        <Alert variant="standard" severity="error" className='alertError'>
-                            {authError}
-                        </Alert>
-                    )}
+                    <button className={`btn ${styles.buttonSend}`} type='submit'>Entrar</button>
+                    
                 </form>
             </div>
         </div>
