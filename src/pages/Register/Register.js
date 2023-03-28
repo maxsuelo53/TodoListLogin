@@ -46,9 +46,9 @@ const Register = () => {
     }, [authError])
 
     return (
-        <div className={styles.register} >
+        <div className='containerComponent' >
             <div className={styles.contentRegister}>
-                <div className={styles.iconLoginPerson}>
+                <div className="iconformStyle">
                     <FaUserPlus />
                 </div>
                 <div className={styles.title}>

@@ -47,7 +47,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className={styles.dashboard}>
+            <div className={styles.dashboardContainer}>
                 <div className={styles.painelTop}>
                     <div className={`btn ${styles.FilterCountTasks}`}>
                         <div className={styles.contentInfoCount}>

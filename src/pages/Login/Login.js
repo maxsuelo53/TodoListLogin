@@ -1,5 +1,6 @@
 import Alert from '@mui/material/Alert';
 import styles from "./Login.module.css"
+import { Link } from 'react-router-dom';
 
 //ICONS
 import { BsPersonFill } from "react-icons/bs";
@@ -45,9 +46,9 @@ const Login = () => {
     }, [authError])
 
     return (
-        <div className='container' >
+        <div className='containerComponent' >
             <div className={styles.containerLogin}>
-                <div className={styles.iconLoginPerson}>
+                <div className={"iconformStyle"}>
                     <BsPersonFill />
                 </div>
                 <div className={styles.title}>
@@ -76,7 +77,7 @@ const Login = () => {
                         />
                     </label>
                     <button className={`btn ${styles.buttonSend}`} type='submit'>Entrar</button>
-                    
+                    <Link to={`/register`} className={styles.linkRegister}>Cadastre-se</Link>
                 </form>
             </div>
         </div>

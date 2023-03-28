@@ -1,14 +1,6 @@
-.register{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5% auto auto auto;
- }
-
  .contentRegister{
-    width: 500px;
-    height: 700px;
+    width: 45%;
+    height: 100%;
     background-color: var(--secondary-color);
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -97,16 +89,10 @@
 }
 
 
-@media screen and (max-width: 767px) {
-    .register{
-        max-width: 90vw;
-        margin: none;
-    }
-    
+@media screen and (max-width: 767px) {   
     .contentRegister{
         width: 90%;
-        height: 80%;
-        margin: 30px auto auto auto;
+        height: 90%;
     }
 
     .iconLoginPerson{

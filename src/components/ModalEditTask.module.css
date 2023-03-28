@@ -1,6 +1,6 @@
 .modalAddTaskContent{
-    width: 60%;
-    height: 60%;
+    width: 70%;
+    height: 70%;
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -51,6 +51,8 @@
 .formStyle label input{
     height: 40px;
     width: 80%;
+    border-radius: 0 10px 10px 0;
+    padding:10px;
 }
 
 .formStyle label textarea{
@@ -58,13 +60,6 @@
     border-radius: 10px;
     width: 85%;
     padding: 10px;
-}
-
-.checkBox{
-    background-color: red;
-    width: 80%;
-    display: flex;
-    justify-content: end;
 }
 
 .formStyle button{
@@ -103,6 +98,102 @@
 .buttonClose:hover{
     background-color: #c04141;
 }
+
+/*================================================*/
+.switch {
+    position: relative;
+    left: 50px;
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    width: 80px;
+    border-radius: 20px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 10px;
+    bottom: 7px;
+    background-color: #fff;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: var(--third-color);
+    width: 80px;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--third-color);
+    width: 80px;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(36px);
+    -ms-transform: translateX(36px);
+    transform: translateX(36px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .InfoCheckTask{
+    position: relative;
+    bottom: 60px;
+    right: 160px;
+    font-size: 16px;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-weight: 300;  
+}
+
+.InfoCheckTaskComplete{
+    color: var(--fourth-color);
+    background-color: #35565E;
+    transition: 0.2;
+}
+
+.InfoCheckTaskNoComplete{
+    color: var(--fifth-color);
+    background-color: #4F4660;
+    transition: 0.2;
+}
+
+
+
 
 @media screen and (max-width: 767px) {
     .modalAddTaskContent{

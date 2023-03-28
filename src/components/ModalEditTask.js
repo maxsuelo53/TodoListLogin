@@ -59,7 +59,9 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
             onClose={handleClose}
         >
             <Box className={styles.modalAddTaskContent}>
+
                 <form onSubmit={handleSubmit(editTaskSubmit)} className={styles.formStyle}>
+                    <h1>Editar Tarefa</h1>
                     <label>
                         <div className={styles.iconInput} >
                             <BsFillPencilFill />
@@ -76,15 +78,18 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
                             {...taskInfo("task")}
                         />
                     </label>
-                    <label className={styles.checkBox}>
+                    <label className={styles.switch}>
                         <input type="checkbox"
                             placeholder="Escreva a tarefa"
                             {...taskInfo("checkTask")}
                         />
-                        <span>
-                            {task.checkTask ? <p>Tarefa feita</p> : <p>Concluir Tarefa</p>}
-                        </span>
+                        <span className={styles.slider}></span>
                     </label>
+                    <div className={`${styles.InfoCheckTask} 
+                         ${watch("checkTask") ? styles.InfoCheckTaskComplete : styles.InfoCheckTaskNoComplete}`}
+                    >
+                        {watch("checkTask") ? <p>Completa</p> : <p>Pendente</p>}
+                    </div>
                     <button className="btn" type='submit'>Salvar</button>
                 </form>
                 <button onClick={() => deleteTaskItem(task.id)}>excluir</button>
