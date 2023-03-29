@@ -33,6 +33,7 @@
     color: #fff;
     width: 150px;
     height: 40px;
+    margin: 7% 0;
 }
 
 .linkRegister{
@@ -46,7 +47,7 @@
 
 @media screen and (max-width: 1024px){
     .containerLogin{        
-        width: 40%;
+        width: 60%;
     }
     
 }

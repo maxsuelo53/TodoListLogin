@@ -91,10 +91,18 @@
     border-radius: 15px;
     width: 100px;
     color: #fff;
+    position: relative;
+    bottom: 100%;
 }
 
 .buttonClose:hover{
     background-color: #c04141;
+}
+
+@media screen and (max-width: 1024px) {
+    .buttonClose{
+        bottom: 0%;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -116,6 +124,10 @@
         height: 50px;
         width: 150px;
         font-size: 15px;
+    }
+
+    .buttonClose{
+        bottom: 0;
     }
 
 }
