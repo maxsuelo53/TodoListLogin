@@ -1,6 +1,6 @@
 .modalAddTaskContent{
     width: 70%;
-    height: 70%;
+    min-height: 70%;
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -88,15 +88,17 @@
 }
 
 .buttonClose{
-    background-color: #e54e4e;
-    height: 40px;
-    border-radius: 15px;
-    width: 100px;
+    width: 50px;
+    font-size: 40px;
     color: #fff;
+    position: relative;
+    bottom: 560px;
+    left: 96%;
+    z-index: 999;
 }
 
 .buttonClose:hover{
-    background-color: #c04141;
+  color: #ccc;
 }
 
 /*================================================*/
@@ -192,7 +194,12 @@
     transition: 0.2;
 }
 
-
+@media screen and (max-width: 1023px) {
+  .buttonClose{
+    bottom: 570px;
+    left: 94%;
+  }
+}
 
 
 @media screen and (max-width: 767px) {
@@ -214,6 +221,11 @@
         height: 50px;
         width: 150px;
         font-size: 15px;
+    }
+
+    .buttonClose{
+      bottom: 550px;
+      left: 88%;
     }
 
 }

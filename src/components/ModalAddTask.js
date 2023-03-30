@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 
 import styles from "./ModalAddTask.module.css"
 import { BsFillPencilFill } from 'react-icons/bs'
+import { IoClose } from "react-icons/io5"
 
 import React from 'react';
 import { useInsertDocument } from '../hooks/useInsertDocument';
@@ -76,9 +77,7 @@ const ModalAddTask = ({ openModal, handleClose }) => {
                         <BsSendPlusFill />
                     </button>
                 </form>
-                <div className={styles.buttonCloseContent}>
-                    <button className={`btn ${styles.buttonClose}`} onClick={() => handleClose()} >Sair</button>
-                </div>
+                <button className={`btn ${styles.buttonClose}`} onClick={() => handleClose()} ><IoClose /></button>
 
             </Box>
         </Modal >

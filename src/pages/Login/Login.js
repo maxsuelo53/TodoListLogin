@@ -57,7 +57,7 @@ const Login = () => {
                 </div>
                 <form onSubmit={handleSubmit(loginUserSubmit)} className="contentForm">
                     <label className='labelContent'>
-                        <div className="iconInput">
+                        <div div className="iconInput" >
                             <HiMail />
                         </div>
                         <input type="email"
@@ -65,7 +65,7 @@ const Login = () => {
                             {...login("email")}
                             className={` inputStyle ${errors.email ? 'errorForm' : ""}`}
                         />
-                    </label>
+                    </label >
                     <label className='labelContent'>
                         <div className="iconInput">
                             <TbPassword />
@@ -78,9 +78,9 @@ const Login = () => {
                     </label>
                     <button className={`btn ${styles.buttonSend}`} type='submit'>Entrar</button>
                     <Link to={`/register`} className={styles.linkRegister}>Cadastre-se</Link>
-                </form>
-            </div>
-        </div>
+                </form >
+            </div >
+        </div >
     )
 }
 

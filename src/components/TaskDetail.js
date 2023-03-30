@@ -26,6 +26,18 @@ const TaskDetail = ({ task }) => {
     const { document: taskItem } = useFetchTask(user.uid, task.id)
     const { updateDocument, response } = useUpdateDocument(user.uid);
 
+    const testeModal = (task) => {
+        return (
+            <ModalEditTask
+                openModal={true}
+                handleClose={handleCloseModal}
+                task={task}
+                deleteTask={deleteDocument}
+                updateTask={updateDocument}
+            />
+        )
+    }
+
 
     return (
 

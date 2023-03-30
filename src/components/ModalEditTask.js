@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 
 import styles from "./ModalEditTask.module.css"
 import { BsFillPencilFill } from 'react-icons/bs';
+import { IoClose } from "react-icons/io5"
 
 const schema = yup.object({
     title: yup.string().required("Título é obrigatório"),
@@ -50,6 +51,11 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
 
         updateTask(task.id, data)
         handleClose();
+    }
+
+    const closeModalTaskEdit = () => {
+        handleClose();
+        console.log("trete")
     }
 
 
@@ -93,9 +99,7 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
                     <button className="btn" type='submit'>Salvar</button>
                 </form>
                 <button onClick={() => deleteTaskItem(task.id)}>excluir</button>
-                <div className={styles.buttonCloseContent}>
-                    <button className={`btn ${styles.buttonClose}`} onClick={() => handleClose()} >Sair</button>
-                </div>
+                <button onClick={() => closeModalTaskEdit()} className={`btn ${styles.buttonClose}`} ><IoClose /></button>
             </Box>
         </Modal >
     )
