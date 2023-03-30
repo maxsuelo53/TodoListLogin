@@ -12,6 +12,7 @@ import { FaThList } from "react-icons/fa"
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import { useAuthValue } from '../../context/AuthContext'
 import TaskDetail from '../../components/TaskDetail'
+import ModalEditTask from '../../components/ModalEditTask'
 
 const styleProgressBar = {
     color: "#1A202C",
@@ -23,10 +24,19 @@ const Dashboard = () => {
     const { user } = useAuthValue();
     const { documents: tasks, loading } = useFetchDocuments(user.uid)
 
-    //MODAL CONTROLL
+    //MODALADD CONTROLL
     const [openModalAddTask, setOpenModalAddTask] = useState(false);
     const handleOpenModalAddTask = () => setOpenModalAddTask(true);
     const handleCloseModalAddTask = () => setOpenModalAddTask(false);
+
+    //MODALAEDIT CONTROLL
+    const [openModalEditTask, setOpenModalEditTask] = useState(false);
+    const [dataItem, setdataItem] = useState(null);
+    const handleOpenModalEditTask = (data) => {
+        setOpenModalEditTask(true)
+        setdataItem(data)
+    };
+    const handleCloseModalEditTask = () => { setOpenModalEditTask(false) }
 
     //Contadores
     const [tasksEnd, setTasksEnd] = useState(0)
@@ -119,7 +129,7 @@ const Dashboard = () => {
                         </div>
                         <ul className={styles.listTodosTable}>
                             {tasks && tasks.map((taskItem) => (
-                                <li key={taskItem.id}> <TaskDetail task={taskItem} /> </li>
+                                <li key={taskItem.id}> <TaskDetail task={taskItem} handleOpenModal={handleOpenModalEditTask} /> </li>
                             ))}
                         </ul>
 
@@ -129,6 +139,11 @@ const Dashboard = () => {
             </div>
 
             <ModalAddTask openModal={openModalAddTask} handleClose={handleCloseModalAddTask} />
+            <ModalEditTask
+                openModal={openModalEditTask}
+                handleCloseModal={handleCloseModalEditTask}
+                task={dataItem}
+            />
 
         </>
     )

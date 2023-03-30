@@ -12,6 +12,10 @@ import styles from "./ModalEditTask.module.css"
 import { BsFillPencilFill } from 'react-icons/bs';
 import { IoClose } from "react-icons/io5"
 
+import { useDeleteDocument } from "../hooks/useDeleteDocument";
+import { useAuthValue } from "../context/AuthContext";
+import { useUpdateDocument } from "../hooks/useUpadteDocument";
+
 const schema = yup.object({
     title: yup.string().required("Título é obrigatório"),
     task: yup.string().required("Tafera é obrigatória"),
@@ -19,7 +23,13 @@ const schema = yup.object({
 
 }).required();
 
-const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask }) => {
+const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
+
+
+    const { user } = useAuthValue()
+
+    const { deleteDocument: deleteTask } = useDeleteDocument(user.uid)
+    const { updateDocument: updateTask, response } = useUpdateDocument(user.uid);
 
 
     const { register: taskInfo, handleSubmit, watch, formState: { errors }, reset, setValue }
@@ -28,16 +38,19 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
         });
 
 
-
     useEffect(() => {
-        setValue('title', task.title);
-        setValue('task', task.task);
-        setValue('checkTask', task.checkTask);
-    }, [])
+        if (task) {
+            setValue('title', task.title);
+            setValue('task', task.task);
+            setValue('checkTask', task.checkTask);
+        }
+    }, [task])
+
+
 
 
     const deleteTaskItem = (id) => {
-        handleClose();
+        handleCloseModal();
         deleteTask(id);
     }
 
@@ -50,19 +63,13 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
         }
 
         updateTask(task.id, data)
-        handleClose();
+        handleCloseModal();
     }
-
-    const closeModalTaskEdit = () => {
-        handleClose();
-        console.log("trete")
-    }
-
 
     return (
         <Modal
             open={openModal}
-            onClose={handleClose}
+            onClose={handleCloseModal}
         >
             <Box className={styles.modalAddTaskContent}>
 
@@ -99,7 +106,7 @@ const ModalEditTask = ({ openModal, handleClose, task, deleteTask, updateTask })
                     <button className="btn" type='submit'>Salvar</button>
                 </form>
                 <button onClick={() => deleteTaskItem(task.id)}>excluir</button>
-                <button onClick={() => closeModalTaskEdit()} className={`btn ${styles.buttonClose}`} ><IoClose /></button>
+                <button onClick={() => handleCloseModal()} className={`btn ${styles.buttonClose}`} ><IoClose /></button>
             </Box>
         </Modal >
     )

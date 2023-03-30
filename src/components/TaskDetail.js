@@ -1,48 +1,13 @@
 import styles from "./TaskDetail.module.css"
 
-import { useState } from "react";
-import ModalEditTask from "./ModalEditTask";
-
-
-
-import { useDeleteDocument } from "../hooks/useDeleteDocument";
-import { useAuthValue } from "../context/AuthContext";
-import { useUpdateDocument } from "../hooks/useUpadteDocument";
-import { useFetchTask } from "../hooks/useFetchTask";
-
-
-const TaskDetail = ({ task }) => {
-
-    //MODAL CONTROLLER
-    const [OpenModal, setOpenModal] = useState(false);
-    const handleOpenModal = () => setOpenModal(true);
-    const handleCloseModal = () => setOpenModal(false);
+const TaskDetail = ({ task, handleOpenModal }) => {
 
     let dataTask = new Date(task.createdAt).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-
-    const { user } = useAuthValue()
-
-    const { deleteDocument } = useDeleteDocument(user.uid)
-    const { document: taskItem } = useFetchTask(user.uid, task.id)
-    const { updateDocument, response } = useUpdateDocument(user.uid);
-
-    const testeModal = (task) => {
-        return (
-            <ModalEditTask
-                openModal={true}
-                handleClose={handleCloseModal}
-                task={task}
-                deleteTask={deleteDocument}
-                updateTask={updateDocument}
-            />
-        )
-    }
-
 
     return (
 
         <>
-            <div onClick={handleOpenModal}>
+            <div onClick={() => handleOpenModal(task)}>
                 <p className={styles.title}>{task.title}</p>
                 <p className={styles.data}>{dataTask}</p>
                 <p className={`${styles.status} ${task.checkTask ? styles.taskCompleted : styles.taskPending}`}>
@@ -52,13 +17,6 @@ const TaskDetail = ({ task }) => {
                         ) : (<p>Pendente</p>)}
                     </div>
                 </p>
-                <ModalEditTask
-                    openModal={OpenModal}
-                    handleClose={handleCloseModal}
-                    task={task}
-                    deleteTask={deleteDocument}
-                    updateTask={updateDocument}
-                />
             </div>
         </>
     )
