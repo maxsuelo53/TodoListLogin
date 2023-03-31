@@ -1,5 +1,6 @@
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import Dialog from '@mui/material/Dialog';
 
 import React from 'react'
 import { useEffect, useState } from 'react';
@@ -10,7 +11,7 @@ import { useForm } from "react-hook-form";
 
 import styles from "./ModalEditTask.module.css"
 import { BsFillPencilFill } from 'react-icons/bs';
-import { IoClose } from "react-icons/io5"
+import { IoClose, IoAlertCircle } from "react-icons/io5"
 
 import { useDeleteDocument } from "../hooks/useDeleteDocument";
 import { useAuthValue } from "../context/AuthContext";
@@ -37,6 +38,12 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
             resolver: yupResolver(schema)
         });
 
+    //MODAL DELETE CONTROLL
+    const [modalDeleteTask, setModalDeleteTask] = useState(false);
+    const handleOpenModalDeleteTask = () => setModalDeleteTask(true);
+    const handleCloseModalDeleteTask = () => setModalDeleteTask(false);
+
+
 
     useEffect(() => {
         if (task) {
@@ -51,6 +58,7 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
 
     const deleteTaskItem = (id) => {
         handleCloseModal();
+        handleCloseModalDeleteTask();
         deleteTask(id);
     }
 
@@ -66,49 +74,74 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
         handleCloseModal();
     }
 
+    const confirmDeleteModal = () => {
+        setModalDeleteTask(true);
+    }
+
+
     return (
-        <Modal
-            open={openModal}
-            onClose={handleCloseModal}
-        >
-            <Box className={styles.modalAddTaskContent}>
+        <>
+            <Modal
+                open={openModal}
+                onClose={handleCloseModal}
+            >
+                <Box className={styles.modalAddTaskContent}>
 
-                <form onSubmit={handleSubmit(editTaskSubmit)} className={styles.formStyle}>
-                    <h1>Editar Tarefa</h1>
-                    <label>
-                        <div className={styles.iconInput} >
-                            <BsFillPencilFill />
-                        </div>
-                        <input type="text"
-                            placeholder="Título da tarefa"
-                            {...taskInfo("title")}
-                        />
+                    <form onSubmit={handleSubmit(editTaskSubmit)} className={styles.formStyle}>
+                        <h1>Editar Tarefa</h1>
+                        <label>
+                            <div className={styles.iconInput} >
+                                <BsFillPencilFill />
+                            </div>
+                            <input type="text"
+                                placeholder="Título da tarefa"
+                                {...taskInfo("title")}
+                            />
 
-                    </label>
-                    <label>
-                        <textarea type="text"
-                            placeholder="Escreva a tarefa"
-                            {...taskInfo("task")}
-                        />
-                    </label>
-                    <label className={styles.switch}>
-                        <input type="checkbox"
-                            placeholder="Escreva a tarefa"
-                            {...taskInfo("checkTask")}
-                        />
-                        <span className={styles.slider}></span>
-                    </label>
-                    <div className={`${styles.InfoCheckTask} 
+                        </label>
+                        <label>
+                            <textarea type="text"
+                                placeholder="Escreva a tarefa"
+                                {...taskInfo("task")}
+                            />
+                        </label>
+                        <label className={styles.switch}>
+                            <input type="checkbox"
+                                placeholder="Escreva a tarefa"
+                                {...taskInfo("checkTask")}
+                            />
+                            <span className={styles.slider}></span>
+                        </label>
+                        <div className={`${styles.InfoCheckTask} 
                          ${watch("checkTask") ? styles.InfoCheckTaskComplete : styles.InfoCheckTaskNoComplete}`}
-                    >
-                        {watch("checkTask") ? <p>Completa</p> : <p>Pendente</p>}
+                        >
+                            {watch("checkTask") ? <p>Completa</p> : <p>Pendente</p>}
+                        </div>
+                        <div className={styles.contentButtons}>
+                            <button className={`btn ${styles.buttonSave}`} type='submit'>Editar</button>
+                            <div className={`btn ${styles.buttonDeleteModal}`} onClick={() => handleOpenModalDeleteTask()}>Excluir</div>
+                        </div>
+                    </form>
+
+                    <button onClick={() => handleCloseModal()} className={`btn ${styles.buttonClose}`} ><IoClose /></button>
+                </Box>
+            </Modal >
+            {modalDeleteTask && (
+                <div className={styles.containerDeleteModal}>
+                    <div className={styles.dialogDelete} >
+                        <div className={styles.titleModalDeleteContainer}>
+                            <IoAlertCircle />
+                            <p>Excluir tarefa</p>
+                        </div>
+                        <h1>Deseja realmente excluir essa tarefa?</h1>
+                        <div className={styles.contianerButtonsConfirm}>
+                            <button className={`btn ${styles.buttonConfirmYes}`} onClick={() => deleteTaskItem(task.id)}>Confimar</button>
+                            <button className={`btn ${styles.buttonConfirmNo}`} onClick={handleCloseModalDeleteTask}>Fechar</button>
+                        </div>
                     </div>
-                    <button className="btn" type='submit'>Salvar</button>
-                </form>
-                <button onClick={() => deleteTaskItem(task.id)}>excluir</button>
-                <button onClick={() => handleCloseModal()} className={`btn ${styles.buttonClose}`} ><IoClose /></button>
-            </Box>
-        </Modal >
+                </div>
+            )}
+        </>
     )
 }
 
