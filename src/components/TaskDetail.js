@@ -1,5 +1,5 @@
 import styles from "./TaskDetail.module.css"
-import { FaPencilAlt, FaTrashAlt } from "react-icons/fa"
+import { FaEye, FaTrashAlt } from "react-icons/fa"
 
 const TaskDetail = ({ task, handleOpenModal, deleteTask, handleOpenModalConfirmDelete }) => {
 
@@ -28,7 +28,7 @@ const TaskDetail = ({ task, handleOpenModal, deleteTask, handleOpenModalConfirmD
                     </div>
                 </div>
                 <div className={styles.contentActionsTask}>
-                    <button onClick={() => handleOpenModal(task)} className={styles.buttonEdit}><FaPencilAlt /></button>
+                    <button onClick={() => handleOpenModal(task)} className={styles.buttonEdit}><FaEye /></button>
                     <button onClick={() => deleteConfirmTask(task.id)} className={styles.buttonDelete}><FaTrashAlt /></button>
                 </div>
             </div>
