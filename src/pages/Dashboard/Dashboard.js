@@ -9,8 +9,13 @@ import ProgressBar from "@ramonak/react-progress-bar";
 
 import { BsFillCalendarCheckFill, BsClockFill, BsSearch } from 'react-icons/bs'
 import { FaThList } from "react-icons/fa"
+import { IoAlertCircle } from "react-icons/io5"
+
+
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import { useAuthValue } from '../../context/AuthContext'
+import { useDeleteDocument } from '../../hooks/useDeleteDocument'
+
 import TaskDetail from '../../components/TaskDetail'
 import ModalEditTask from '../../components/ModalEditTask'
 
@@ -23,6 +28,7 @@ const Dashboard = () => {
 
     const { user } = useAuthValue();
     const { documents: tasks, loading } = useFetchDocuments(user.uid)
+    const { deleteDocument: deleteTask } = useDeleteDocument(user.uid)
 
     //MODALADD CONTROLL
     const [openModalAddTask, setOpenModalAddTask] = useState(false);
@@ -38,6 +44,22 @@ const Dashboard = () => {
     };
     const handleCloseModalEditTask = () => { setOpenModalEditTask(false) }
 
+    //MODAL DELETE CONFIRM CONTROLL
+    const [modalDeleteTask, setModalDeleteTask] = useState(false);
+    const [deleteTaskID, setDeleteTaskID] = useState(null);
+    const handleOpenModalDeleteTask = (id) => {
+        setModalDeleteTask(true);
+        setDeleteTaskID(id);
+    }
+    const handleCloseModalDeleteTask = () => setModalDeleteTask(false);
+
+
+    const deleteTaskItem = (id) => {
+        handleCloseModalDeleteTask();
+        deleteTask(id);
+    }
+
+
     //Contadores
     const [tasksEnd, setTasksEnd] = useState(0)
     const [tasksPending, setTaskPending] = useState(0)
@@ -51,9 +73,6 @@ const Dashboard = () => {
         }
         return
     }, [tasks])
-
-
-    console.log(parseInt(tasksPending / tasksTotal * 100))
 
     return (
         <>
@@ -122,14 +141,16 @@ const Dashboard = () => {
                         </button>
                     </div>
                     <div className={styles.listContent}>
-                        <div className={styles.titleContainer}>
-                            <p className={styles.tableTitle}>Título</p>
-                            <p className={styles.tableDate}>Data de criação</p>
-                            <p className={styles.tableStatus}>Status</p>
-                        </div>
                         <ul className={styles.listTodosTable}>
                             {tasks && tasks.map((taskItem) => (
-                                <li key={taskItem.id}> <TaskDetail task={taskItem} handleOpenModal={handleOpenModalEditTask} /> </li>
+                                <li key={taskItem.id}>
+                                    <TaskDetail
+                                        task={taskItem}
+                                        handleOpenModal={handleOpenModalEditTask}
+                                        handleOpenModalConfirmDelete={handleOpenModalDeleteTask}
+                                        deleteTask={deleteTaskItem}
+                                    />
+                                </li>
                             ))}
                         </ul>
 
@@ -144,6 +165,23 @@ const Dashboard = () => {
                 handleCloseModal={handleCloseModalEditTask}
                 task={dataItem}
             />
+            {/*MODAL DE CONFIRMAÇÃO DE EXCLUSÃO DA TAREFA*/}
+            {modalDeleteTask && (
+                <div className={styles.containerDeleteModal}>
+                    <div className={styles.dialogDelete} >
+                        <div className={styles.titleModalDeleteContainer}>
+                            <IoAlertCircle />
+                            <p>Excluir tarefa</p>
+                        </div>
+                        <h1>Deseja realmente excluir essa tarefa?</h1>
+                        <div className={styles.contianerButtonsConfirm}>
+                            <button className={`btn ${styles.buttonConfirmYes}`} onClick={() => deleteTaskItem(deleteTaskID)}>Confimar</button>
+                            <button className={`btn ${styles.buttonConfirmNo}`} onClick={handleCloseModalDeleteTask}>Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
 
         </>
     )

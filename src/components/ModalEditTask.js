@@ -1,6 +1,5 @@
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import Dialog from '@mui/material/Dialog';
 
 import React from 'react'
 import { useEffect, useState } from 'react';
@@ -11,7 +10,7 @@ import { useForm } from "react-hook-form";
 
 import styles from "./ModalEditTask.module.css"
 import { BsFillPencilFill } from 'react-icons/bs';
-import { IoClose, IoAlertCircle } from "react-icons/io5"
+import { IoClose } from "react-icons/io5"
 
 import { useDeleteDocument } from "../hooks/useDeleteDocument";
 import { useAuthValue } from "../context/AuthContext";
@@ -28,8 +27,6 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
 
 
     const { user } = useAuthValue()
-
-    const { deleteDocument: deleteTask } = useDeleteDocument(user.uid)
     const { updateDocument: updateTask, response } = useUpdateDocument(user.uid);
 
 
@@ -37,11 +34,6 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
         = useForm({
             resolver: yupResolver(schema)
         });
-
-    //MODAL DELETE CONTROLL
-    const [modalDeleteTask, setModalDeleteTask] = useState(false);
-    const handleOpenModalDeleteTask = () => setModalDeleteTask(true);
-    const handleCloseModalDeleteTask = () => setModalDeleteTask(false);
 
 
 
@@ -53,15 +45,6 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
         }
     }, [task])
 
-
-
-
-    const deleteTaskItem = (id) => {
-        handleCloseModal();
-        handleCloseModalDeleteTask();
-        deleteTask(id);
-    }
-
     const editTaskSubmit = (dataTask) => {
 
         const data = {
@@ -72,10 +55,6 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
 
         updateTask(task.id, data)
         handleCloseModal();
-    }
-
-    const confirmDeleteModal = () => {
-        setModalDeleteTask(true);
     }
 
 
@@ -112,35 +91,20 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
                             />
                             <span className={styles.slider}></span>
                         </label>
-                        <div className={`${styles.InfoCheckTask} 
-                         ${watch("checkTask") ? styles.InfoCheckTaskComplete : styles.InfoCheckTaskNoComplete}`}
+                        <div
+                            className={`${styles.InfoCheckTask} 
+                            ${watch("checkTask") ? styles.InfoCheckTaskComplete : styles.InfoCheckTaskNoComplete}`}
                         >
                             {watch("checkTask") ? <p>Completa</p> : <p>Pendente</p>}
                         </div>
                         <div className={styles.contentButtons}>
                             <button className={`btn ${styles.buttonSave}`} type='submit'>Editar</button>
-                            <div className={`btn ${styles.buttonDeleteModal}`} onClick={() => handleOpenModalDeleteTask()}>Excluir</div>
                         </div>
                     </form>
 
                     <button onClick={() => handleCloseModal()} className={`btn ${styles.buttonClose}`} ><IoClose /></button>
                 </Box>
             </Modal >
-            {modalDeleteTask && (
-                <div className={styles.containerDeleteModal}>
-                    <div className={styles.dialogDelete} >
-                        <div className={styles.titleModalDeleteContainer}>
-                            <IoAlertCircle />
-                            <p>Excluir tarefa</p>
-                        </div>
-                        <h1>Deseja realmente excluir essa tarefa?</h1>
-                        <div className={styles.contianerButtonsConfirm}>
-                            <button className={`btn ${styles.buttonConfirmYes}`} onClick={() => deleteTaskItem(task.id)}>Confimar</button>
-                            <button className={`btn ${styles.buttonConfirmNo}`} onClick={handleCloseModalDeleteTask}>Fechar</button>
-                        </div>
-                    </div>
-                </div>
-            )}
         </>
     )
 }

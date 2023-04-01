@@ -1,37 +1,78 @@
-.title{
-    width: 50%;
-    overflow: hidden;
+.ContentitemInformationIndividual{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 1%;
 }
 
-.data{
-    width: 25%;
+.checkTaskButton{
+    width: 30px;
+    height: 100%;
     display: flex;
-    padding-left: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    width: 60%;
+    max-width: 60%;
+}
+
+.titleTask{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.dataTask{
+    font-size: 12px;
 }
 
 .status{
-    width: 25%;
+    width: 95px;
+    height: 35px;
     display: flex;
-    justify-content: start;
-    align-items: center;
-    padding-left: 10px;
-}
-.status div{
-    min-height: 35px;
-    max-width: 120px;
-    border-radius: 15px;
     justify-content: center;
+    align-items: center;
+    border-radius: 20px;
 }
 
-.taskCompleted div{
+.taskCompleted {
     background-color: #2FE5A720;
     color: var(--fourth-color);
 
 }
 
-.taskPending div{
+.taskPending {
     background-color: #ff69b420;
     color: var(--fifth-color);
+}
+
+.contentActionsTask{
+    display: flex;
+    gap: 20px;
+}
+
+.contentActionsTask button{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #232a36;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonEdit:hover{
+    background-color: var(--third-color);
+    color: var(--secondary-color);
+    transition: 0.3s;
+}
+
+.buttonDelete:hover{
+    background-color: #fa5252;
+    color: var(--secondary-color);
+    transition: 0.3s;
 }
 
 @media screen and (max-width: 767px) {

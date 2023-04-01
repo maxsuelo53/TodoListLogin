@@ -12,6 +12,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 import { useState, useEffect } from "react"
@@ -27,6 +30,7 @@ const schema = yup.object({
 
 const Login = () => {
     const [error, setError] = useState("");
+    const [statusLogin, setStatusLogin] = useState('');
     const { loginUser, error: authError, loading } = useAuthentication();
 
     const { register: login, handleSubmit, watch, formState: { errors } }
@@ -35,14 +39,16 @@ const Login = () => {
         });
 
     const loginUserSubmit = async (userData) => {
-        const res = await loginUser(userData);
-        console.log(res)
+        let res = await loginUser(userData);
     }
 
     useEffect(() => {
+        const notify = () => toast.error(authError)
         if (authError) {
-            setError(authError)
+            setError(authError);
+            notify();
         }
+
     }, [authError])
 
     return (
@@ -79,6 +85,7 @@ const Login = () => {
                     <button className={`btn ${styles.buttonSend}`} type='submit'>Entrar</button>
                     <Link to={`/register`} className={styles.linkRegister}>Cadastre-se</Link>
                 </form >
+                <ToastContainer theme='colored' />
             </div >
         </div >
     )

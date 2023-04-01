@@ -77,14 +77,14 @@ export const useAuthentication = () => {
 
         try {
 
-            await signInWithEmailAndPassword(auth, data.email, data.password)
+            await signInWithEmailAndPassword(auth, data.email, data.password);
 
         } catch (error) {
 
             let systemErrorMessage;
 
             if (error.message.includes("user-not-found") || error.message.includes("password")) {
-                systemErrorMessage = "Usuário ou senha incorretos!"
+                systemErrorMessage = "Usuário ou senha incorreto!"
             } else if (error.message.includes("password")) {
                 systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
             }
