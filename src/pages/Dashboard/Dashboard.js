@@ -15,6 +15,7 @@ import { IoAlertCircle } from "react-icons/io5"
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import { useAuthValue } from '../../context/AuthContext'
 import { useDeleteDocument } from '../../hooks/useDeleteDocument'
+import { useUpdateDocument } from "../../hooks/useUpadteDocument";
 
 import TaskDetail from '../../components/TaskDetail'
 import ModalEditTask from '../../components/ModalEditTask'
@@ -29,6 +30,7 @@ const Dashboard = () => {
     const { user } = useAuthValue();
     const { documents: tasks, loading } = useFetchDocuments(user.uid)
     const { deleteDocument: deleteTask } = useDeleteDocument(user.uid)
+    const { updateDocument: updateTask, response } = useUpdateDocument(user.uid);
 
     //MODALADD CONTROLL
     const [openModalAddTask, setOpenModalAddTask] = useState(false);
@@ -52,15 +54,12 @@ const Dashboard = () => {
         setDeleteTaskID(id);
     }
     const handleCloseModalDeleteTask = () => setModalDeleteTask(false);
-
-
     const deleteTaskItem = (id) => {
         handleCloseModalDeleteTask();
         deleteTask(id);
     }
 
-
-    //Contadores
+    //COUNT FUNCTIONS
     const [tasksEnd, setTasksEnd] = useState(0)
     const [tasksPending, setTaskPending] = useState(0)
     const [tasksTotal, settaskTotal] = useState(0);
@@ -71,8 +70,24 @@ const Dashboard = () => {
             setTaskPending(tasks.filter(item => item.checkTask === false).length)
             settaskTotal(tasks.length)
         }
-        return
     }, [tasks])
+
+
+    //FILTER LIST
+    const [filterList, setFilterList] = useState()
+    const [filterOption, setfilterOption] = useState()
+
+    useEffect(() => {
+        if (tasks) {
+            if (filterOption === "yes") {
+                setFilterList(tasks.filter(item => item.checkTask === true))
+            } else if (filterOption === "no") {
+                setFilterList(tasks.filter(item => item.checkTask === false))
+            } else {
+                setFilterList(tasks)
+            }
+        }
+    }, [filterOption, tasks])
 
     return (
         <>
@@ -134,20 +149,27 @@ const Dashboard = () => {
                 </div>
                 <div className={styles.todoListContent}>
                     <div className={styles.actionsTodoList}>
-                        <h1>Tarefas</h1>
                         <button className={styles.addItemButton} onClick={handleOpenModalAddTask}>
                             Adicionar
                             <MdOutlinePlaylistAdd />
                         </button>
+                        <div className={styles.selectFilter}>
+                            <select value={filterOption} onChange={(event) => setfilterOption(event.target.value)}>
+                                <option value="all">Todas</option>
+                                <option value="yes">Completas</option>
+                                <option value="no">Pendentes</option>
+                            </select>
+                        </div>
                     </div>
                     <div className={styles.listContent}>
                         <ul className={styles.listTodosTable}>
-                            {tasks && tasks.map((taskItem) => (
+                            {filterList && filterList.map((taskItem) => (
                                 <li key={taskItem.id}>
                                     <TaskDetail
                                         task={taskItem}
                                         handleOpenModal={handleOpenModalEditTask}
                                         handleOpenModalConfirmDelete={handleOpenModalDeleteTask}
+                                        updateTask={updateTask}
                                         deleteTask={deleteTaskItem}
                                     />
                                 </li>

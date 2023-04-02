@@ -8,7 +8,7 @@ import {
     where
 } from "firebase/firestore";
 
-export const useFetchDocuments = (docCollection, search = null, uid = null) => {
+export const useFetchDocuments = (docCollection, search = null) => {
 
     const [documents, setDocuments] = useState(null)
     const [error, setError] = useState(null)
@@ -30,6 +30,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                 let q;
 
                 q = await query(collectionRef, orderBy("createdAt", "desc"));
+                //q = await query(collectionRef, orderBy("checkTask"));
 
                 await onSnapshot(q, (querySnapshot) => {
 
@@ -37,7 +38,6 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                         querySnapshot.docs.map((doc) => ({
                             id: doc.id,
                             ...doc.data(),
-
                         }))
                     )
                 })
@@ -53,7 +53,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
         loadData()
 
-    }, [docCollection, search, uid, cancelled])
+    }, [docCollection, search, cancelled])
 
     useEffect(() => {
         return () => {

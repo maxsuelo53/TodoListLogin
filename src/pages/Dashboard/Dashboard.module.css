@@ -94,6 +94,8 @@
     color: #fff;
 }
 
+/*============= AÇÕES DA LISTA ADD E FILTER =============*/
+
 .actionsTodoList{
     display: flex;
     flex-direction: row;
@@ -119,11 +121,58 @@
     height: 25px;
 }
 
+select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background-color: #232a36;
+    background-image: none;
+    width: 70%;
+}
+
+select::-ms-expand{
+    display: none;
+}
+
+.selectFilter{
+    position: relative;
+    display: flex;
+    width: 9em;
+    height: 3em;
+    line-height: 3;
+    background-color: red;
+    overflow: hidden;
+    border-radius: 0.25em;
+}
+
+select {
+    flex: 1;
+    padding: 0 .5em;
+    color: #fff;
+    cursor: pointer;
+}
+
+.selectFilter::after{
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+    background-color: var(--primary-color);
+}
+
 /*LISTAGEM DAS TAREFAS*/
 
 .listContent{
     margin-top: 2%;
-    background-color: var(--primary-color);
+    background-color: #232a36;
     height: 400px;
     width: 100%;
     border-radius: 10px;
@@ -259,6 +308,21 @@
     background-color: #a02525;
   }
 
+  @media(max-width: 1280px){
+    .listContent{
+        margin-top: 30px;
+        height: 85%;
+    }
+
+    .listTodosTable{
+        width: 100%;
+        height: 95%;
+        overflow-y: auto;
+        color: #fff;
+    }
+  }
+  
+
 @media(max-width: 1024px){
     .painelTop{
         width: 100%;
@@ -275,7 +339,19 @@
 
     .listTodosTable{
         padding: 20px;
-        height: 400px;
+        height: 450px;
+        overflow-y: auto;
+        color: #fff;
+    }
+
+    .listContent{
+        margin-top: 30px;
+        height: 85%;
+    }
+
+    .listTodosTable{
+        width: 100%;
+        height: 95%;
         overflow-y: auto;
         color: #fff;
     }
@@ -285,12 +361,12 @@
 @media(max-width: 767px){
 
     .painelTop{
-        width: 95%;
+        width: 100%;
         height: 90px;
         flex-direction: row;
         margin: 5px auto;
         margin-bottom: 5px;
-        padding: 0;
+        padding: 0 1px;
 
     }
     
@@ -379,7 +455,7 @@
     
     .addItemButton{
         background-color: #4eabe5;
-        height: 50px;
+        height: 40px;
         width: 100px;
         border-radius: 15px;
         color: #fff;
@@ -397,7 +473,7 @@
     
     .listContent{
         margin-top: 30px;
-        height: 75%;
+        height: 85%;
     }
     
     .titleContainer{
@@ -427,7 +503,7 @@
     
     .listTodosTable{
         width: 100%;
-        height: 80%;
+        height: 95%;
         overflow-y: auto;
         color: #fff;
     }
@@ -449,19 +525,11 @@
     }
     
     .listTodosTable li{
-        height: 60px;
-        font-size: 15px;
+        height: 50px;
+        font-size: 12px;
         font-weight: 300;
         width: 100%;
     }
-    
-    .listTodosTable li:nth-child(odd) {
-        background-color: var(--primary-color);
-     }
-    
-     .listTodosTable li:nth-child(even) {
-        background-color: var(--secondary-color);
-     }
     
     .listTodosTable li div{
         display: flex;

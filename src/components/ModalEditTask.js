@@ -35,7 +35,17 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
             resolver: yupResolver(schema)
         });
 
+    const [statusTask, setstatusTask] = useState()
 
+    useEffect(() => {
+        try {
+            if (task) {
+                setstatusTask(task.checkTask);
+            }
+        } catch (error) {
+
+        }
+    }, [])
 
     useEffect(() => {
         if (task) {
@@ -57,6 +67,25 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
         handleCloseModal();
     }
 
+    const handleEndTask = (status) => {
+
+        let newStatus;
+
+        if (status === true) {
+            newStatus = true;
+        } else {
+            newStatus = false;
+        }
+
+        const data = {
+            title: task.title,
+            task: task.task,
+            checkTask: newStatus
+        }
+
+        updateTask(task.id, data)
+        handleCloseModal();
+    }
 
     return (
         <>
@@ -84,24 +113,15 @@ const ModalEditTask = ({ openModal, handleCloseModal, task }) => {
                                 {...taskInfo("task")}
                             />
                         </label>
-                        <label className={styles.switch}>
-                            <input type="checkbox"
-                                placeholder="Escreva a tarefa"
-                                {...taskInfo("checkTask")}
-                            />
-                            <span className={styles.slider}></span>
-                        </label>
-                        <div
-                            className={`${styles.InfoCheckTask} 
-                            ${watch("checkTask") ? styles.InfoCheckTaskComplete : styles.InfoCheckTaskNoComplete}`}
-                        >
-                            {watch("checkTask") ? <p>Completa</p> : <p>Pendente</p>}
-                        </div>
                         <div className={styles.contentButtons}>
                             <button className={`btn ${styles.buttonSave}`} type='submit'>Editar</button>
+                            {task && !task.checkTask ? (
+                                <div className={`btn ${styles.buttonEndTask}`} onClick={() => { handleEndTask(true) }} >Concluir Tarefa</div>
+                            ) : (
+                                <div className={`btn ${styles.buttonEndTaskNo}`} onClick={() => { handleEndTask(false) }} >Reabrir Tarefa</div>
+                            )}
                         </div>
                     </form>
-
                     <button onClick={() => handleCloseModal()} className={`btn ${styles.buttonClose}`} ><IoClose /></button>
                 </Box>
             </Modal >

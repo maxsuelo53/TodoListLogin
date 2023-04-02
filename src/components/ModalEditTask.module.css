@@ -1,6 +1,7 @@
 .modalAddTaskContent{
-    width: 70%;
-    min-height: 70%;
+    width: 60%;
+    max-width: 700px;
+    min-height: 50%;
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -10,7 +11,7 @@
     display: flex;
     flex-direction: column;
     padding: 30px;
-    border: 10px solid var(--primary-color);
+    border-radius: 10px;
 }
 
 .formStyle{
@@ -89,6 +90,27 @@
 
 .buttonSave:hover{
   background-color: var(--third-color-hover);
+  transition: 0.35s;
+}
+
+.buttonEndTask{
+  background-color: var(--fourth-color);
+  cursor: pointer;
+}
+
+.buttonEndTask:hover{
+  background-color: #27bb8a;
+  transition: 0.35s;
+}
+
+.buttonEndTaskNo{
+  background-color: var(--fifth-color);
+  cursor: pointer;
+}
+
+.buttonEndTaskNo:hover{
+  background-color: #cf5793;
+  transition: 0.35s;
 }
 
 .buttonDeleteModal{
@@ -113,7 +135,7 @@
     font-size: 40px;
     color: #fff;
     position: relative;
-    bottom: 560px;
+    bottom: 430px;
     left: 96%;
     z-index: 999;
 }
@@ -261,26 +283,32 @@
 @media screen and (max-width: 767px) {
     .modalAddTaskContent{
         width: 90%;
-        height: 75%;
+        height: 80%;
         padding: 10px;
         border: none;
     }
 
     .formStyle label textarea{
-        height: 200px;
+        height: 300px;
         border-radius: 10px;
         width: 90%;
         padding: 10px;
     }
 
     .formStyle button{
-        height: 50px;
-        width: 150px;
+        height: 40px;
+        width: 120px;
         font-size: 15px;
     }
 
+    .buttonEndTask, .buttonEndTaskNo{
+      height: 40px !important;
+      width: 120px !important;
+      font-size: 15px !important;
+    }
+
     .buttonClose{
-      bottom: 550px;
+      bottom: 500px;
       left: 88%;
     }
 

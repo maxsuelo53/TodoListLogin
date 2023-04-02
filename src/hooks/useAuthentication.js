@@ -56,7 +56,7 @@ export const useAuthentication = () => {
             let systemErrorMessage;
 
             if (errorSystem.message.includes("email-already")) {
-                systemErrorMessage = "O e-mail já está cadastrado. Não foi possível cadastrar o usuário!"
+                systemErrorMessage = "Já existe um usuário com esse endereço e-mail!"
             } else if (errorSystem.message.includes("password")) {
                 systemErrorMessage = "A senha deve conter no mínimo 6 dígitos!"
             }

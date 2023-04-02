@@ -1,6 +1,7 @@
 .modalAddTaskContent{
     width: 60%;
     min-height: 60%;
+    max-width: 700px;
     border-radius: 10px;
     position: absolute;
     top: 50%;

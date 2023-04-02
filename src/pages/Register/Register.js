@@ -15,6 +15,11 @@ import { TbPassword } from "react-icons/tb"
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUserPlus } from "react-icons/fa"
 
+//ALERT ERROR
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Tooltip from '@mui/material/Tooltip';
+
 
 const schema = yup.object({
     displayName: yup.string().required("Nome é obrigatório"),
@@ -40,9 +45,12 @@ const Register = () => {
     }
 
     useEffect(() => {
+        const notify = () => toast.error(authError)
         if (authError) {
-            setError(authError)
+            setError(authError);
+            notify();
         }
+
     }, [authError])
 
     return (
@@ -67,16 +75,18 @@ const Register = () => {
                         />
 
                     </label>
-                    <label>
-                        <div className={styles.iconInput} >
-                            <HiMail />
-                        </div>
-                        <input type="email"
-                            placeholder={`${errors.email ? errors.email.message : "E-mail do usuário"}`}
-                            {...register("email")}
-                            className={`inputStyle ${errors.email ? 'errorForm' : ""}`}
-                        />
-                    </label>
+                    <Tooltip title="Não é necessário e-mail ser válido!">
+                        <label>
+                            <div className={styles.iconInput} >
+                                <HiMail />
+                            </div>
+                            <input type="email"
+                                placeholder={`${errors.email ? errors.email.message : "E-mail do usuário"}`}
+                                {...register("email")}
+                                className={`inputStyle ${errors.email ? 'errorForm' : ""}`}
+                            />
+                        </label>
+                    </Tooltip>
                     <label>
                         <div className={styles.iconInput} >
                             <TbPassword />
@@ -98,12 +108,8 @@ const Register = () => {
                         />
                     </label>
                     <button className="btn" type='submit'>Cadastrar</button>
-                    {authError && (
-                        <Alert variant="standard" severity="error" className='alertError'>
-                            {authError}
-                        </Alert>
-                    )}
                 </form>
+                <ToastContainer theme='colored' />
             </div>
 
         </div>

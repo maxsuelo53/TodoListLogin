@@ -6,6 +6,7 @@
     width: 100%;
     height: 100%;
     padding: 0 1%;
+    border-radius: 10px;
 }
 
 .checkTaskButton{
@@ -18,6 +19,77 @@
     width: 60%;
     max-width: 60%;
 }
+
+/*========== CHECKBOX PERSONALIZADO ==============*/
+.containerCheckBox{
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.containerCheckBox input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: #232a36;
+    transition: 0.3s;
+  }
+
+  /* On mouse-over, add a grey background color */
+.containerCheckBox:hover input ~ .checkmark {
+    background-color: #2d3544;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .containerCheckBox input:checked ~ .checkmark {
+    background-color: var(--fourth-color)
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .containerCheckBox input:checked ~ .checkmark:after {
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* Style the checkmark/indicator */
+  .containerCheckBox .checkmark:after {
+    left: 8px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border: solid var(--primary-color);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    transition: 0.3s;
+  }
 
 .titleTask{
     font-size: 16px;
@@ -75,22 +147,59 @@
     transition: 0.3s;
 }
 
+.taskFinished{
+    background-color: var(--primary-color);
+    transition: 0.4s;
+    color: var(--text-color);
+}
+
 @media screen and (max-width: 767px) {
-    .data{
-        display: none;
-    }
-    .status{
-        width: 50%;
-        justify-content: flex-end;
+    
+    .checkTaskButton div{
+        max-width: 120px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        overflow: hidden;
     }
 
-    .status div{
-        min-height: 25px;
-        max-width: 80px;
-        border-radius: 15px;
-        justify-content: center;
-        font-size: 12px;
+    .titleTask{
+        min-width: 120px;
+        font-size: 13px;
+        margin-bottom: -10px;
+    }
     
+    .status{
+        display: none !important;
+    }
+
+    .contentActionsTask{
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+    
+    .contentActionsTask button{
+        width: 30px;
+        height: 30px;
+    }
+    
+    .buttonEdit:hover{
+        background-color: var(--third-color);
+        color: var(--secondary-color);
+        transition: 0.3s;
+    }
+    
+    .buttonDelete:hover{
+        background-color: #fa5252;
+        color: var(--secondary-color);
+        transition: 0.3s;
+    }
+    
+    .taskFinished{
+        background-color: var(--primary-color);
+        transition: 0.4s;
+        color: var(--text-color);
     }
 }
 

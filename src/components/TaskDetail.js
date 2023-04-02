@@ -1,7 +1,7 @@
 import styles from "./TaskDetail.module.css"
 import { FaEye, FaTrashAlt } from "react-icons/fa"
 
-const TaskDetail = ({ task, handleOpenModal, deleteTask, handleOpenModalConfirmDelete }) => {
+const TaskDetail = ({ task, handleOpenModal, updateTask, deleteTask, handleOpenModalConfirmDelete }) => {
 
     let dataTask = new Date(task.createdAt).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
@@ -9,12 +9,32 @@ const TaskDetail = ({ task, handleOpenModal, deleteTask, handleOpenModalConfirmD
         handleOpenModalConfirmDelete(id);
     }
 
+    const handleUpdateTask = () => {
+
+        const data = {
+            title: task.title,
+            task: task.task,
+            checkTask: !task.checkTask
+        }
+
+
+        updateTask(task.id, data)
+
+    }
+
     return (
 
         <>
-            <div className={styles.ContentitemInformationIndividual}>
+            <div
+                className={`${styles.ContentitemInformationIndividual} 
+                ${task.checkTask ? styles.taskFinished : ""}`
+                }>
                 <div className={styles.checkTaskButton}>
-                    <input type="checkbox" />
+                    <label class={styles.containerCheckBox}>
+                        <input type="checkbox" checked={task.checkTask} onChange={handleUpdateTask} />
+                        <span class={styles.checkmark}></span>
+                    </label>
+
                     <div>
                         <p className={styles.titleTask}>{task.title}</p>
                         <p className={styles.dataTask}>{dataTask}</p>
