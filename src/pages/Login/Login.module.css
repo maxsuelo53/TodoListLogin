@@ -2,12 +2,13 @@
     background-color: var(--secondary-color);
     border-radius: 20px;
     width: 30%;
-    min-height: 73%;
+    height: 73%;
+    max-height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2%;
-    gap: 5%;
+    padding: 3% 2%;
+    gap: 2%;
 }
 
 .title{
@@ -19,7 +20,7 @@
 
 .title h1{
     color: #fff;
-    font-size: 30px;
+    font-size: 2em;
     font-weight: 900;
 }
 

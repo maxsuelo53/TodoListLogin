@@ -156,7 +156,7 @@
 @media screen and (max-width: 767px) {
     
     .checkTaskButton div{
-        max-width: 120px;
+        min-width: 140px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -164,7 +164,7 @@
     }
 
     .titleTask{
-        min-width: 120px;
+        min-width: 140px;
         font-size: 13px;
         margin-bottom: -10px;
     }
