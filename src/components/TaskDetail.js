@@ -30,9 +30,9 @@ const TaskDetail = ({ task, handleOpenModal, updateTask, deleteTask, handleOpenM
                 ${task.checkTask ? styles.taskFinished : ""}`
                 }>
                 <div className={styles.checkTaskButton}>
-                    <label class={styles.containerCheckBox}>
+                    <label className={styles.containerCheckBox}>
                         <input type="checkbox" checked={task.checkTask} onChange={handleUpdateTask} />
-                        <span class={styles.checkmark}></span>
+                        <span className={styles.checkmark}></span>
                     </label>
 
                     <div>

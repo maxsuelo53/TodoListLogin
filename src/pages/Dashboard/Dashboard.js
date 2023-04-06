@@ -64,14 +64,35 @@ const Dashboard = () => {
     const [tasksPending, setTaskPending] = useState(0)
     const [tasksTotal, settaskTotal] = useState(0);
 
+    const [percentEnd, setpercentEnd] = useState(0)
+    const [percentPending, setPercentPending] = useState(0)
+
     useEffect(() => {
+
+        const handlePercentControl = () => {
+            if (parseInt(tasks.filter(item => item.checkTask === true).length / tasks.length * 100)) {
+                setpercentEnd(parseInt(tasks.filter(item => item.checkTask === true).length / tasks.length * 100))
+            } else {
+                setpercentEnd(0)
+            }
+
+            if (parseInt(tasks.filter(item => item.checkTask === false).length / tasks.length * 100)) {
+                setPercentPending(parseInt(tasks.filter(item => item.checkTask === false).length / tasks.length * 100))
+            } else {
+                setPercentPending(0)
+            }
+        }
+
         if (tasks) {
             setTasksEnd(tasks.filter(item => item.checkTask === true).length)
             setTaskPending(tasks.filter(item => item.checkTask === false).length)
             settaskTotal(tasks.length)
+            handlePercentControl()
+        } else {
+            setTasksEnd(0)
+            setTaskPending(0)
         }
-    }, [tasks])
-
+    }, [tasks, modalDeleteTask])
 
     //FILTER LIST
     const [filterList, setFilterList] = useState()
@@ -116,7 +137,7 @@ const Dashboard = () => {
                         </div>
                         <ProgressBar
                             className={styles.progressBarBack}
-                            completed={parseInt(tasksEnd / tasksTotal * 100)}
+                            completed={percentEnd}
                             baseBgColor={styleProgressBar.color}
                             borderRadius={styleProgressBar.radius}
                             labelColor={styleProgressBar.color}
@@ -138,7 +159,7 @@ const Dashboard = () => {
                         </div>
                         <ProgressBar
                             className={styles.progressBarBack}
-                            completed={parseInt(tasksPending / tasksTotal * 100)}
+                            completed={percentPending}
                             baseBgColor={styleProgressBar.color}
                             borderRadius={styleProgressBar.radius}
                             labelColor={styleProgressBar.color}

@@ -27,7 +27,6 @@ export const useFetchTask = (docCollection, id) => {
                 setLoading(false);
 
             } catch (error) {
-                console.log(error);
                 setError(error.message)
                 setLoading(false);
             }

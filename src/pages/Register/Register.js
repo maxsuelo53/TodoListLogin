@@ -41,7 +41,6 @@ const Register = () => {
 
     const registerUser = async (userData) => {
         const res = await createUser(userData);
-        console.log(res)
     }
 
     useEffect(() => {
